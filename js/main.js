@@ -30,6 +30,7 @@ var globel = {
 		}
 		var handleComplete = function(e) {
 			$('.loading_bar').width('100%');
+			console.log(e)
 			loading_mod.hide();
 		}
 		if(manifest.length>0){
@@ -42,9 +43,27 @@ var globel = {
 		};
 	},
 	startShow: function(argument) {
-		console.log(1)
+		this.aniFunc('.page1');
+		$('.page-container').show();
+		$('.scroll-container').each(function(){
+			$(this).swiper({
+				direction: 'vertical',
+				scrollContainer: true,
+				mousewheelControl: true,
+				hide:false,
+				scrollbar: {
+					container: $(this).find('.swiper-scrollbar')[0]
+				},
+			});
+		});
+	},
+	aniFunc: function(page) {
+		$(page).addClass('show').find('.animate').each(function() {
+			$(this).show().addClass($(this).attr('data-animate') + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+					$(this).removeClass($(this).attr('data-animate') + ' animated');
+			});
+		});
 	}
-
 };
 
 globel.domLoading()
