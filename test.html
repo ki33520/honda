@@ -55,16 +55,11 @@
 			wheelStep: 10,
 			allowPageScroll: false
 		});
-		var obj1 = {
-			id1: {"name":"feeling","val":"20"},
-			id2: {"name":"cindy","val":"30"}
-		}
 		var obj2 = {
-			id1: {"name":"feeling","val":"20","delete": true},
-			id2: {"name":"cindy","val":"40"},
-			id3: {"name":"cindyx","val":"30"}
+			id1: {"name":"feeling","val":"20","type": "delete"},
+			id2: {"name":"cindy","val":"40","type": "changed"},
+			id3: {"name":"cindyx","val":"30","type": "add"}
 		}
-		console.log(_.extend(obj1, obj2))
 	</script>
 </body>
 </html>
