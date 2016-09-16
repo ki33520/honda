@@ -20,6 +20,7 @@ a:hover{text-decoration:underline}
 ins,a{text-decoration:none}
 
 html,body{ height: 100%;}
+body{ height: 504px;}
 .body-wrap{ font-size: .32rem; height: 100%;}
 
 .slide_btn{width:90px;height:60px;position:absolute;left:50%;margin-left:-45px;bottom:0;z-index:111;transition:all 1s;border-radius: 50%;background:rgba(87,37,3,0.5);background-size:contain;background:none;
@@ -38,4 +39,13 @@ html,body{ height: 100%;}
 .loading_bar{ height: 4px; width: 0%; background-color: #42d41b; position: absolute; left: 0; top: 0;}
 .loading_inner{ position: absolute; width: 60px; height: 60px; left: 50%; top: 50%; margin-left: -30px; margin-top: -30px;}
 
-.page1{ background-color: #ccc; }
+.page .content{ width: 100%; height: 100%; position: relative;}
+.row{ position: absolute; width: 10rem;}
+.row img{ width: 100%; display: block;}
+.row .row-level-3{}
+
+.logo{ position: absolute; left: 0; top: 0; width: 3.125rem; z-index: 95;}
+
+/*page1*/
+.page1{ background-color: #c9363d; }
+.page1 .row-level-3{ bottom: 0; left: 0;}
