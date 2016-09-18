@@ -692,6 +692,19 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   }
 }
 
+.light4{
+  animation: light1 5s 1s infinite;
+  transform-origin: left;
+}
+.light5{
+  animation: light2 5s 1s infinite;
+  transform-origin: left;
+}
+.light6{
+  animation: light3 5s 1s infinite;
+  transform-origin: left;
+}
+
 .delay0_25{
   animation-delay: 0.25s;
   -webkit-animation-delay: 0.25s;

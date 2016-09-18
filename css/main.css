@@ -47,6 +47,7 @@ body{ overflow: hidden; position: relative; text-align: left;}
 .masker{ position: fixed; left: 0; top: 0; width: 100%; height: 100%; opacity: 0.7; background-color: #000; z-index: 99; display: none;}
 .rule-wrap{ position: fixed; left: 0; top: 1.25rem; width: 100%; height: 13.59375rem; z-index: 100; display: none;}
 .rule-bg img{ width: 100%; height: 100%;}
+.rule-light-1{ position: absolute; left: 6.75rem; top: 0.34rem;}
 .rule-light-2{ position: absolute; width: 1.875rem; height: 0.09375rem; background-color: #f52b2c; bottom: 0.1016rem; left: 2.22rem;
 transform: scaleX(1) skew(-15deg);}
 .rule-content{ position: absolute; width: 7.1875rem; height: 9.84375rem; left: 1.4rem; top: 2.4375rem;}
@@ -63,7 +64,7 @@ transform: scaleX(1) skew(-15deg);}
 .row .row-level-3{}
 
 .logo{ position: absolute; left: 0; top: 0; width: 3.125rem; z-index: 95;}
-.lights .light{ float: left; width: 0.2rem; height: 0.2rem; background: #f00; border-radius: 100%; margin-right: 2px;}
+.lights .light{ float: left; width: 0.15rem; height: 0.15rem; background: #e4131a; border-radius: 100%; margin-right: 2px; box-shadow: 0 0 5px #ab0005;}
 
 /*page1*/
 .page1{ background-color: #ac2831; }
@@ -110,13 +111,23 @@ transform: scaleX(1) skew(-15deg);}
 .page3 .row-level-7 .rule-content .btn-back img{ width: 1.796875rem;}
 .page3 .row-masker{ position: absolute; width: 100%; height: 15.75rem; left: 0; top: 0; opacity: 0.7; background-color: #000;}
 
-
-
-
-
-
-
-
+/*page4*/
+.page4 .row-level-3{ top: 11.265625rem; left: 0; width: 3.609375rem;}
+.page4 .row-level-4{ top: 0; left: 0; width: 3.890625rem;}
+.page4 .row-level-5{ top: 0; right: 0; width: 3.890625rem;}
+.page4 .row-level-6{ bottom: 0; left: 0;}
+.page4 .row-level-7{ left: 1.15625rem; top: 4.171875rem; width: 7.375rem;}
+.page4 .row-level-7 .rule-light-1{ left: 5.25rem; top: 0.255rem;}
+.page4 .row-level-7 .rule-light-1 .lights .light{ width: 0.12rem; height: 0.12rem;}
+.page4 .row-level-7 .rule-light-2{ top: 7.140625rem; left: 1.5625rem; width: 1.52rem;}
+.tl-light{ position: absolute; left: 1.578125rem; top: 2rem;}
+.tl-light .light{ width: 0.5625rem; margin-right: 0;}
+.tr-light{ position: absolute; left: 0.625rem; top: 1.875rem;}
+.tr-light .light{ width: 0.28125rem; margin-right: 0;}
+.tr-light .light:first-child{ width: 0.3125rem;}
+.type-btn{ position: absolute; left: 1.625rem; top: 4rem; width: 2.03125rem; opacity: 0;}
+.type-btn-2{ left: 4.0625rem;}
+.type-btn:active{ opacity: 1;}
 
 
 

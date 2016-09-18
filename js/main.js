@@ -112,10 +112,13 @@ $(function(){
 				};
 				var curPage = e.activeIndex;
 				aniFunc($('.page').eq(curPage));
-				if(e.activeIndex === 2){
+				if(e.activeIndex === 2 || e.activeIndex === $('.page').length-1){
 					e.lockSwipeToNext();
 				}else{
 					e.unlockSwipeToNext();
+				}
+				if(e.activeIndex === $('.page').length-1){
+					$("#musicBox")[0].play();
 				}
 			},
 			onTouchMove: function(e) {
@@ -150,7 +153,11 @@ $(function(){
 			},
 		});
 	});*/
-
+	window.addEventListener('touchstart', touchstartHandler, false);
+	function touchstartHandler(){
+		$("#musicBox")[0].load();
+		//$("#musicBox")[0].play();
+	}
 	$('.rule-btn').on('click',function(){
 		$('.masker').fadeIn();
 		$('.rule-wrap').fadeIn();

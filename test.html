@@ -13,8 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
 	<title>Honda</title>
 </head>
-<body><p>用力摇一摇你手机</p>  
-<audio id="musicBox"  controls="controls" src="http://www.w3school.com.cn/i/horse.mp3" autoplay="false">
+<body>
 	<div class="page-container">
 		<div class="masker stop-swiping"></div>
 		<div class="rules rule-wrap stop-swiping">
@@ -49,7 +48,8 @@
 					</div>
 				</div>
 				<div class="swiper-slide page page3">
-					3
+					<p>用力摇一摇你手机</p>  
+<audio id="musicBox"  controls="controls" src="http://www.w3school.com.cn/i/horse.mp3" >
 				</div>
 				<div class="swiper-slide page page4">
 					<div class="scroll-wrap">
@@ -90,7 +90,7 @@
 		window.addEventListener('touchstart', touchstartHandler, false);
 		function touchstartHandler(){
 			$("#musicBox")[0].load(); 
-                    $("#musicBox")[0].play(); 
+            $("#musicBox")[0].play(); 
 		}
 
 		var SHAKE_THRESHOLD = 3000;  
