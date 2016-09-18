@@ -561,6 +561,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 }
 
 .shakeI{
+  -webkit-animation: shakeI 4s 0s infinite;
   animation: shakeI 4s 0s infinite;
 }
 
@@ -601,6 +602,8 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 }
 
 .stretch{
+  -webkit-animation: stretch 6s 0s infinite;
+  -webkit-transform-origin: left;
   animation: stretch 6s 0s infinite;
   transform-origin: left;
 }
@@ -614,7 +617,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     transform: scaleX(.3) skew(-15deg);
   }
 }
-@-webkit-keyframes stretch {
+@keyframes stretch {
   0%,20%,80%,100%{
     -webkit-transform: scaleX(.3) skew(-15deg);
     -ms-transform: scaleX(.3) skew(-15deg);
@@ -624,6 +627,68 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     -webkit-transform: scaleX(1) skew(-15deg);
     -ms-transform: scaleX(1) skew(-15deg);
     transform: scaleX(1) skew(-15deg);
+  }
+}
+
+
+.light1{
+  animation: light1 5s 0s infinite;
+  transform-origin: left;
+}
+@-webkit-keyframes light1 {
+  0%,83%,100%{
+    opacity:0
+  }
+  10%,80%{
+    opacity:1
+  }
+}
+@keyframes light1 {
+  0%,83%,100%{
+    opacity:0
+  }
+  10%,80%{
+    opacity:1
+  }
+}
+.light2{
+  animation: light2 5s 0s infinite;
+  transform-origin: left;
+}
+@-webkit-keyframes light2 {
+  0%,20%,83%,100%{
+    opacity:0
+  }
+  30%,80%{
+    opacity:1
+  }
+}
+@keyframes light2 {
+  0%,20%,83%,100%{
+    opacity:0
+  }
+  30%,80%{
+    opacity:1
+  }
+}
+.light3{
+  animation: light3 5s 0s infinite;
+  transform-origin: left;
+}
+@-webkit-keyframes light3 {
+  0%,40%,83%,100%{
+    opacity:0
+  }
+  50%,80%{
+    opacity:1
+  }
+}
+@keyframes light3 {
+  0%,40%,83%,100%{
+    opacity:0
+  }
+  50%,80%{
+    opacity:1
   }
 }
 

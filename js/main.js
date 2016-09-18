@@ -29,7 +29,7 @@ $.extend({
 		return sValue?sValue[1]:sValue;
 	}
 });
-var manifest = [];
+var manifest = ["images/logo.png"];
 $("img").each(function(){
 	manifest.push($(this).attr('src'));
 });
@@ -89,7 +89,7 @@ $(function(){
 	window.pageInit = function(){
 		aniFunc('.page'+(pi+1));
 		$('.page-container').show();
-		myPageSwiper = new Swiper('.swiper-container', {
+		myPageSwiper = new Swiper('.swiper-main', {
 			initialSlide: pi,
 			loop: true,
 			noSwiping: true,
@@ -127,9 +127,19 @@ $(function(){
 			onSlideNextEnd: function(e) {
 			}
 		});
+		$('.scroll-container').each(function(){
+			new Swiper(this, {
+				scrollbar: '.swiper-scrollbar',
+				scrollbarHide: false,
+				direction: 'vertical',
+				slidesPerView: 'auto',
+				mousewheelControl: true,
+				freeMode: true
+			});
+		});
 	};
 
-	$('.scroll-container').each(function(){
+	/*$('.scroll-container').each(function(){
 	 	$(this).swiper({
 			mode: 'vertical',
 			scrollContainer: true,
@@ -139,7 +149,7 @@ $(function(){
 				container: $(this).find('.swiper-scrollbar')[0]
 			},
 		});
-	});
+	});*/
 
 	$('.rule-btn').on('click',function(){
 		$('.masker').fadeIn();
