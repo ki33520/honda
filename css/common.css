@@ -717,15 +717,34 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   transform-origin: left;
 }
 .roll-animate{
-  -webkit-animation: roll-animate 3s 1s infinite;
-  -webkit-transform-origin: 10% 10%;
+  animation: roll-animate 3s 1s infinite;
+  transform-origin: 10% 10%;
+}
+.roll-animate2{
+  nimation: roll-animate 3s 1s infinite;
+  transform-origin: 50% 50%;
+}
+.roll-animate3{
+  animation: roll-animate3 3s 1s infinite;
+  transform-origin: 10% 10%;
 }
 @keyframes roll-animate {
-  0%,10%,20%,30%,100%{
-    transform:rotate(7deg);
-  }
-  5%,15%,25%{
+  0%,10%,20%,30%,40%,100%{
     transform:rotate(0);
+  }
+  5%,15%,25%,35%{
+    transform:rotate(15deg);
+  }
+}
+@keyframes roll-animate3 {
+  40%,100%{
+    transform:rotate(4deg);
+  }
+  0%,10%,20%,30%{
+    transform:rotate(-10deg);
+  }
+  5%,15%,25%,35%{
+    transform:rotate(10deg);
   }
 }
 

@@ -1,5 +1,3 @@
-"use strict";
-
 $.extend({
 	testAct: function(str,reg){
 		return(reg.test(str));
@@ -97,6 +95,7 @@ $(function(){
 			slidesPerView: 1,
 			loop: false,
 			direction: 'vertical',
+			autoHeight: true,
 			onInit: function(e){
 				if(pi == (e.slides.length-1)){
 					$('.slide_btn').hide();
@@ -104,7 +103,8 @@ $(function(){
 					$('.slide_btn').show();
 				};
 			},
-			onTransitionEnd: function(e) {
+			onSlideChangeEnd: function(e) {
+				$('.page').find('.animate').hide();
 				if(e.activeIndex == (e.slides.length-1)){
 					$('.slide_btn').hide();
 				}else{
@@ -112,34 +112,34 @@ $(function(){
 				};
 				var curPage = e.activeIndex;
 				aniFunc($('.page').eq(curPage));
-				if(e.activeIndex === 2 || e.activeIndex === $('.page').length-1){
+				if(e.activeIndex === 2 || e.activeIndex === 3 || e.activeIndex === 4 || e.activeIndex === $('.page').length-1){
 					e.lockSwipeToNext();
 				}else{
 					e.unlockSwipeToNext();
 				}
-				if(e.activeIndex === $('.page').length-1){
+				if(e.activeIndex === 3 || e.activeIndex === 4 || e.activeIndex === 5 || e.activeIndex === 6 || e.activeIndex === 7){
 					$("#musicBox")[0].play();
 				}
-			},
-			onTouchMove: function(e) {
-				$($('.page').get(e.activeIndex - 1)).find('.animate').hide();
-				$($('.page').get(e.activeIndex + 1)).find('.animate').hide();
+				if(e.activeIndex === 7){
+					startShake();
+				}
+				$('.page').eq(curPage).find('.scroll-container').each(function(){
+					new Swiper(this,{
+						scrollbar: '.swiper-scrollbar',
+						scrollbarHide: false,
+						direction: 'vertical',
+						slidesPerView: 'auto',
+						mousewheelControl: true,
+						freeMode: true
+					});
+				});
 			},
 			onSlidePrevEnd: function(e) {
 			},
 			onSlideNextEnd: function(e) {
 			}
 		});
-		$('.scroll-container').each(function(){
-			new Swiper(this, {
-				scrollbar: '.swiper-scrollbar',
-				scrollbarHide: false,
-				direction: 'vertical',
-				slidesPerView: 'auto',
-				mousewheelControl: true,
-				freeMode: true
-			});
-		});
+		
 	};
 
 	/*$('.scroll-container').each(function(){
@@ -173,8 +173,86 @@ $(function(){
 		myPageSwiper.unlockSwipeToNext();
 		myPageSwiper.slideNext();
 	});
+	$('.type-btn').on('click',function(){
+		myPageSwiper.unlockSwipeToNext();
+		myPageSwiper.slideNext();
+	});
+	$('.rank-btn').on('click',function(){
+		myPageSwiper.unlockSwipeToNext();
+		myPageSwiper.slideNext();
+	});
+	$('.pd-list li').on('click',function(){
+		myPageSwiper.unlockSwipeToNext();
+		myPageSwiper.slideTo(6);
+	});
+	$('.btn-back-choose').on('click',function(){
+		myPageSwiper.unlockSwipeToNext();
+		myPageSwiper.slideTo(4);
+	});
+	$('.btn-start-shake').on('click',function(){
+		myPageSwiper.unlockSwipeToNext();
+		myPageSwiper.slideTo(7);
+	});
+	$('.share-btn').on('click',function(){
+		$('.share-cover').show();
+	});
+	$('.share-cover').on('click',function(){
+		$('.share-cover').hide();
+	});
 
 	$('#return').on('click',function(){
 		myPageSwiper.swipeTo(0);
 	});
+
+	var SHAKE_THRESHOLD = 3000;  
+    var last_update = 0;
+    var shake_bl = false;
+    var x = y = z = last_x = last_y = last_z = shake_num = 0;  
+	function startShake(){
+		if (window.DeviceMotionEvent) {  
+            window.addEventListener('devicemotion', deviceMotionHandler, false);  
+        } else {  
+            alert('not support mobile event');  
+        }  
+	}
+	function deviceMotionHandler(eventData) {  
+        var acceleration = eventData.accelerationIncludingGravity;  
+        var curTime = new Date().getTime();  
+        if ((curTime - last_update) > 100) {  
+            var diffTime = curTime - last_update;  
+            last_update = curTime;  
+            x = acceleration.x;  
+            y = acceleration.y;  
+            z = acceleration.z;  
+            var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000; 
+            if (speed > SHAKE_THRESHOLD) {
+            	shake_num++;
+            	if(!shake_bl){
+            		shake_bl = true;
+            		$('.status-1').hide();
+            		$('.status-2').show();
+            		countNumber(10);
+            	}
+            }  
+            last_x = x;  
+            last_y = y;  
+            last_z = z;  
+        }  
+    }
+    function countNumber(num){
+    	setTimeout(function(){
+    		$('.status-2 .number').text(--num);
+    		if(num>0){
+    			countNumber(num);
+    		}else{
+    			voteFn(shake_num)
+    		}
+    	},1000)
+    }
+    function voteFn(shake_num){
+    	var vote_num = shake_num*6 >200 ? 200 : shake_num*6;
+    	$('.status').hide();
+    	$('.status-3 .number').text(vote_num);
+    	$('.status-3').show();
+    }
 });
