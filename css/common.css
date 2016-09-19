@@ -632,6 +632,8 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 
 .light1{
+  -webkit-animation: light1 5s 0s infinite;
+  -webkit-transform-origin: left;
   animation: light1 5s 0s infinite;
   transform-origin: left;
 }
@@ -652,6 +654,8 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   }
 }
 .light2{
+  -webkit-animation: light2 5s 0s infinite;
+  -webkit-transform-origin: left;
   animation: light2 5s 0s infinite;
   transform-origin: left;
 }
@@ -672,6 +676,8 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   }
 }
 .light3{
+  -webkit-animation: light3 5s 0s infinite;
+  -webkit-transform-origin: left;
   animation: light3 5s 0s infinite;
   transform-origin: left;
 }
@@ -693,16 +699,34 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 }
 
 .light4{
+  -webkit-animation: light1 5s 1s infinite;
+  -webkit-transform-origin: left;
   animation: light1 5s 1s infinite;
   transform-origin: left;
 }
 .light5{
+  -webkit-animation: light2 5s 1s infinite;
+  -webkit-transform-origin: left;
   animation: light2 5s 1s infinite;
   transform-origin: left;
 }
 .light6{
+  -webkit-animation: light3 5s 1s infinite;
+  -webkit-transform-origin: left;
   animation: light3 5s 1s infinite;
   transform-origin: left;
+}
+.roll-animate{
+  -webkit-animation: roll-animate 3s 1s infinite;
+  -webkit-transform-origin: 10% 10%;
+}
+@keyframes roll-animate {
+  0%,10%,20%,30%,100%{
+    transform:rotate(7deg);
+  }
+  5%,15%,25%{
+    transform:rotate(0);
+  }
 }
 
 .delay0_25{

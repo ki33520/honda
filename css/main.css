@@ -65,6 +65,7 @@ transform: scaleX(1) skew(-15deg);}
 
 .logo{ position: absolute; left: 0; top: 0; width: 3.125rem; z-index: 95;}
 .lights .light{ float: left; width: 0.15rem; height: 0.15rem; background: #e4131a; border-radius: 100%; margin-right: 2px; box-shadow: 0 0 5px #ab0005;}
+.roll-animate{ transform:rotate(7deg); background-color: #f00; width: 6rem; height: 6rem; position: absolute; left: 2rem; top: 2rem;}
 
 /*page1*/
 .page1{ background-color: #ac2831; }
