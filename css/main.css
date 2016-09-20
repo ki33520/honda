@@ -64,7 +64,8 @@ transform: scaleX(1) skew(-15deg);}
 .row .row-level-3{}
 
 .logo{ position: absolute; left: 0; top: 0; width: 3.125rem; z-index: 95;}
-.lights .light{ float: left; width: 0.15rem; height: 0.15rem; background: #e4131a; border-radius: 100%; margin-right: 2px; box-shadow: 0 0 5px #ab0005;}
+.lights .light{ float: left; background: #e4131a; border-radius: 100%; margin-right: 2px; box-shadow: 0 0 5px #ab0005;}
+.rule-light-1 .lights .light{ width: 0.15rem; height: 0.15rem; }
 
 
 /*page1*/
@@ -172,7 +173,7 @@ transform: scaleX(1) skew(-15deg);}
 
 /*page8*/
 .page8 .row-level-7{ left: 1.15625rem; top: 4.171875rem; width: 7.375rem; }
-.page8 .row-level-7 .inner{ transform:rotate(4deg); height: 100%; width: 100%;}
+.page8 .row-level-7 .inner{ height: 100%; width: 100%;}
 .page8 .row-level-7 .rule-light-1{ left: 5.25rem; top: 0.255rem;}
 .page8 .row-level-7 .rule-light-1 .lights .light{ width: 0.12rem; height: 0.12rem;}
 .page8 .row-level-7 .rule-light-2{ top: 7.140625rem; left: 1.5625rem; width: 1.52rem;}
@@ -183,8 +184,11 @@ transform: scaleX(1) skew(-15deg);}
 .page8 .row-level-7 .status-3 .number{ position: absolute; left: 2.5rem; top: 4.035rem; font-size: .33rem; width: 0.66rem; text-align: center; color: #fff; line-height: 120%;}
 .share-btn{ position: absolute; left: 4.0625rem; top: 12.28125rem; width: 1.796875rem; }
 .share-cover{ position: absolute; left: 0; top: 0; width: 100%; display: none;}
-
-
+.share-cover .tl-light{ left: 2.6rem; top: 5.89rem;}
+.share-cover .tl-light .light{ width: 0.5rem;}
+.share-cover .rule-light-1{ left: 6.171875rem; top: 5.34rem; position: absolute;}
+.share-cover .rule-light-1 .light{ width: 0.1rem; height: 0.1rem;}
+.share-cover .rule-light-2{ position: absolute; bottom: auto; top: 9.609375rem; left: 3.015625rem; width: 1.34375rem; height: 0.078125rem;}
 
 
 

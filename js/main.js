@@ -117,6 +117,9 @@ $(function(){
 				}else{
 					e.unlockSwipeToNext();
 				}
+				if(e.activeIndex === 3){
+					e.removeSlide(2);
+				}
 				if(e.activeIndex === 3 || e.activeIndex === 4 || e.activeIndex === 5 || e.activeIndex === 6 || e.activeIndex === 7){
 					$("#musicBox")[0].play();
 				}
@@ -134,7 +137,10 @@ $(function(){
 					});
 				});
 			},
-			onSlidePrevEnd: function(e) {
+			onSlidePrevEnd: function(swiper, event) {
+				if(swiper.activeIndex == 3){
+					//console.log(swiper,event)
+				}
 			},
 			onSlideNextEnd: function(e) {
 			}
@@ -204,55 +210,57 @@ $(function(){
 		myPageSwiper.swipeTo(0);
 	});
 
-	var SHAKE_THRESHOLD = 3000;  
-    var last_update = 0;
-    var shake_bl = false;
-    var x = y = z = last_x = last_y = last_z = shake_num = 0;  
+	var SHAKE_THRESHOLD = 3000;
+	var last_update = 0;
+	var shake_bl = false;
+	var x = y = z = last_x = last_y = last_z = shake_num = 0;
 	function startShake(){
-		if (window.DeviceMotionEvent) {  
-            window.addEventListener('devicemotion', deviceMotionHandler, false);  
-        } else {  
-            alert('not support mobile event');  
-        }  
+		if (window.DeviceMotionEvent) {
+			window.addEventListener('devicemotion', deviceMotionHandler, false);
+		} else {
+			alert('not support mobile event');
+		}
 	}
-	function deviceMotionHandler(eventData) {  
-        var acceleration = eventData.accelerationIncludingGravity;  
-        var curTime = new Date().getTime();  
-        if ((curTime - last_update) > 100) {  
-            var diffTime = curTime - last_update;  
-            last_update = curTime;  
-            x = acceleration.x;  
-            y = acceleration.y;  
-            z = acceleration.z;  
-            var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000; 
-            if (speed > SHAKE_THRESHOLD) {
-            	shake_num++;
-            	if(!shake_bl){
-            		shake_bl = true;
-            		$('.status-1').hide();
-            		$('.status-2').show();
-            		countNumber(10);
-            	}
-            }  
-            last_x = x;  
-            last_y = y;  
-            last_z = z;  
-        }  
-    }
-    function countNumber(num){
-    	setTimeout(function(){
-    		$('.status-2 .number').text(--num);
-    		if(num>0){
-    			countNumber(num);
-    		}else{
-    			voteFn(shake_num)
-    		}
-    	},1000)
-    }
-    function voteFn(shake_num){
-    	var vote_num = shake_num*6 >200 ? 200 : shake_num*6;
-    	$('.status').hide();
-    	$('.status-3 .number').text(vote_num);
-    	$('.status-3').show();
-    }
+	function deviceMotionHandler(eventData) {
+		var acceleration = eventData.accelerationIncludingGravity;
+		var curTime = new Date().getTime();
+		if ((curTime - last_update) > 100) {
+			var diffTime = curTime - last_update;
+			last_update = curTime;
+			x = acceleration.x;
+			y = acceleration.y;
+			z = acceleration.z;
+			var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000; 
+			if (speed > SHAKE_THRESHOLD) {
+				shake_num++;
+				if(!shake_bl){
+					shake_bl = true;
+					$('.status-1').hide();
+					$('.status-2').show();
+					$('.shake-vote').addClass('roll-animate');
+					countNumber(10);
+				}
+			}
+			last_x = x;
+			last_y = y;
+			last_z = z;
+		}
+	}
+	function countNumber(num){
+		setTimeout(function(){
+			$('.status-2 .number').text(--num);
+			if(num>0){
+				countNumber(num);
+			}else{
+				voteFn(shake_num)
+			}
+		},1000)
+	}
+	function voteFn(shake_num){
+		var vote_num = shake_num*6 >200 ? 200 : shake_num*6;
+		$('.status').hide();
+		$('.status-3 .number').text(vote_num);
+		$('.status-3').show();
+		$('.shake-vote').removeClass('roll-animate');
+	}
 });
