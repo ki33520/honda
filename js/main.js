@@ -196,7 +196,7 @@ $(function(){
 		$('.rules').fadeOut();
 	});
 	$('.btn-back').on('click',function(){
-		myPageSwiper.slidePrev();
+		$('.row-rule').hide();
 	});
 	$('.btn-confirm').on('click',function(){
 		myPageSwiper.unlockSwipeToNext();
