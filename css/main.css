@@ -189,8 +189,8 @@ transform: scaleX(1) skew(-15deg);}
 .share-cover{ position: absolute; left: 0; top: 0; width: 100%; display: none;}
 .share-cover .tl-light{ left: 2.6rem; top: 5.89rem;}
 .share-cover .tl-light .light{ width: 0.5rem;}
-.share-cover .rule-light-1{ left: 6.171875rem; top: 5.33rem; position: absolute;}
-.share-cover .rule-light-1 .light{ width: 0.1rem; height: 0.1rem; margin-right: 0.015625rem;}
+.share-cover .rule-light-1{ left: 6.171875rem; top: 5.325rem; position: absolute;}
+.share-cover .rule-light-1 .light{ width: 0.11rem; height: 0.11rem; margin-right: 0.015625rem;}
 .share-cover .rule-light-2{ position: absolute; bottom: auto; top: 9.609375rem; left: 3.015625rem; width: 1.34375rem; height: 0.078125rem;}
 
 
