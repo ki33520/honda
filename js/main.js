@@ -72,7 +72,6 @@ function aniFunc(page) {
 	$(page).find('.lights').each(function(index,item){
 		var lightFlash = function(itm,ind){
 			setTimeout(function(){
-				console.log(ind)
 				if(ind>=$(item).find('.light').length){
 					ind=0;
 					setTimeout(function(){

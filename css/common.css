@@ -630,6 +630,31 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   }
 }
 
+.heightStretch{
+  -webkit-animation-name: heightStretch;
+  animation-name: heightStretch;
+}
+@-webkit-keyframes heightStretch {
+  0%{
+    height: 0;
+    width: 0;
+  }
+  30%{
+    width: 10rem;
+  }
+  100%{
+    height: 5.03125rem;
+  }
+}
+@keyframes heightStretch {
+  0%{
+    height: 0;
+  }
+  100%{
+    height: 5.03125rem;
+  }
+}
+
 .roll-animate{
   animation: roll-animate 2s 1s infinite;
   transform-origin: 10% 10%;
