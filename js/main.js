@@ -69,6 +69,25 @@ if(manifest.length>0){
 };
 
 function aniFunc(page) {
+	$(page).find('.lights').each(function(index,item){
+		var lightFlash = function(itm,ind){
+			setTimeout(function(){
+				console.log(ind)
+				if(ind>=$(item).find('.light').length){
+					ind=0;
+					setTimeout(function(){
+						$(item).find('.light').fadeOut(100);
+						lightFlash(itm,ind)
+					},1000)
+				}else{
+					$(item).find('.light').eq(ind).fadeIn(200);
+					ind++;
+					lightFlash(itm,ind)
+				}
+			},1000);
+		}
+		lightFlash(item,0);
+	})
 	$(page).addClass('show').find('.animate').each(function() {
 		$(this).show().addClass($(this).attr('data-animate') + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
 				$(this).removeClass($(this).attr('data-animate') + ' animated');
@@ -85,7 +104,7 @@ $(function(){
 	};
 
 	window.pageInit = function(){
-		aniFunc('.page'+(pi+1));
+		aniFunc($('.page').eq(pi));
 		$('.page-container').show();
 		myPageSwiper = new Swiper('.swiper-main', {
 			initialSlide: pi,
@@ -103,8 +122,11 @@ $(function(){
 					$('.slide_btn').show();
 				};
 			},
-			onSlideChangeEnd: function(e) {
+			onSlideChangeStart: function(e) {
 				$('.page').find('.animate').hide();
+			},
+			onSlideChangeEnd: function(e) {
+				$('.row-rule').hide();
 				if(e.activeIndex == (e.slides.length-1)){
 					$('.slide_btn').hide();
 				}else{
@@ -112,13 +134,10 @@ $(function(){
 				};
 				var curPage = e.activeIndex;
 				aniFunc($('.page').eq(curPage));
-				if(e.activeIndex === 2 || e.activeIndex === 3 || e.activeIndex === 4 || e.activeIndex === $('.page').length-1){
-					e.lockSwipeToNext();
-				}else{
+				if(e.activeIndex === 0){
 					e.unlockSwipeToNext();
-				}
-				if(e.activeIndex === 3){
-					e.removeSlide(2);
+				}else{
+					e.lockSwipeToNext();
 				}
 				if(e.activeIndex === 3 || e.activeIndex === 4 || e.activeIndex === 5 || e.activeIndex === 6 || e.activeIndex === 7){
 					$("#musicBox")[0].play();
@@ -138,11 +157,14 @@ $(function(){
 				});
 			},
 			onSlidePrevEnd: function(swiper, event) {
-				if(swiper.activeIndex == 3){
-					//console.log(swiper,event)
-				}
+				
 			},
 			onSlideNextEnd: function(e) {
+			},
+			onTouchEnd: function(swiper, event) {
+				if(swiper.touches.diff<0 && swiper.activeIndex == 1){
+					$('.row-rule').show();
+				}
 			}
 		});
 		
@@ -263,4 +285,5 @@ $(function(){
 		$('.status-3').show();
 		$('.shake-vote').removeClass('roll-animate');
 	}
+	
 });
