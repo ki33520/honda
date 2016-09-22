@@ -138,7 +138,7 @@ $(function(){
 				}else{
 					e.lockSwipeToNext();
 				}
-				if(e.activeIndex === 3 || e.activeIndex === 4 || e.activeIndex === 5 || e.activeIndex === 6 || e.activeIndex === 7){
+				if(e.activeIndex === 2 || e.activeIndex === 3 || e.activeIndex === 4 || e.activeIndex === 5 || e.activeIndex === 6){
 					$("#musicBox")[0].play();
 				}
 				if(e.activeIndex === 7){
@@ -182,8 +182,10 @@ $(function(){
 	});*/
 	window.addEventListener('touchstart', touchstartHandler, false);
 	function touchstartHandler(){
-		$("#musicBox")[0].load();
-		//$("#musicBox")[0].play();
+		if(!($("#musicBox").hasClass('loaded'))){
+			$("#musicBox").addClass('loaded');
+			$("#musicBox")[0].load();
+		}
 	}
 	$('.rule-btn').on('click',function(){
 		$('.masker').fadeIn();
@@ -210,15 +212,15 @@ $(function(){
 	});
 	$('.pd-list li').on('click',function(){
 		myPageSwiper.unlockSwipeToNext();
-		myPageSwiper.slideTo(6);
+		myPageSwiper.slideTo(5);
 	});
 	$('.btn-back-choose').on('click',function(){
 		myPageSwiper.unlockSwipeToNext();
-		myPageSwiper.slideTo(4);
+		myPageSwiper.slideTo(3);
 	});
 	$('.btn-start-shake').on('click',function(){
 		myPageSwiper.unlockSwipeToNext();
-		myPageSwiper.slideTo(7);
+		myPageSwiper.slideTo(6);
 	});
 	$('.share-btn').on('click',function(){
 		$('.share-cover').show();

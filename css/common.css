@@ -359,24 +359,3 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   animation-delay: 6s;
   -webkit-animation-delay: 6s;
 }
-/***body***/
-html,
-body{
-
-}
-body{
-	text-align:justify;
-    text-justify:inter-ideograph;
-	margin: 0 auto;
-	color: #554344;
- 	font-family: arial,Helvetica,sans-serif;
-}
-input,textarea{
- 	font-family: arial,Helvetica,sans-serif;
-}
-.bold,h1,h2,h3,h4,h5,h6,strong{
-	font-weight:bold;
-}
-a{
-	color: #554344;
-}
