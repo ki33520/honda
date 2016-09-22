@@ -64,8 +64,9 @@ transform: scaleX(1) skew(-15deg);}
 .row .row-level-3{}
 
 .logo{ position: absolute; left: 0; top: 0; width: 3.125rem; z-index: 95;}
-.lights .light{ float: left; background: #e4131a; border-radius: 100%; margin-right: 2px; box-shadow: 0 0 5px #ab0005;}
-.rule-light-1 .lights .light{ width: 0.15rem; height: 0.15rem; }
+.lights .light{ float: left; display: none;}
+.rule-light-1 .lights{ padding-top: 0.01rem; }
+.rule-light-1 .lights .light{ width: 0.13rem; height: 0.13rem; background: #e4131a; border-radius: 100%; margin-right: 0.03125rem; box-shadow: 0 0 0.078125rem #ab0005; }
 
 
 /*page1*/
@@ -94,6 +95,16 @@ transform: scaleX(1) skew(-15deg);}
 .page2 .row-level-4{ bottom: 0; left: 0;}
 .page2 .row-level-5{ top: 3.6rem; left: 0;}
 .page2 .row-level-6{ bottom: 0; left: 0;}
+.page .row-rule{ display: none; }
+.page .rule-wrap{ display: block; position: absolute; text-align: left;}
+.page .rule-content{ left: 1.7rem; width: 6.8rem;}
+.page .rule-content .text{ padding-top: .6rem;}
+.page .rule-content .text p{ line-height: 150%; margin-bottom: .3rem;}
+.page .rule-content .btn-confirm{ position: absolute; bottom: 0rem; left: 1rem;}
+.page .rule-content .btn-back{ position: absolute; bottom: 0rem; left: 3.2rem;}
+.page .rule-content .btn-confirm img,
+.page .rule-content .btn-back img{ width: 1.796875rem;}
+.page3 .row-masker{ position: absolute; width: 100%; height: 15.75rem; left: 0; top: 0; opacity: 0.7; background-color: #000;}
 
 
 /*page3*/
@@ -104,15 +115,6 @@ transform: scaleX(1) skew(-15deg);}
 .page3 .row-level-5{ top: 3.6rem; left: 0;}
 .page3 .row-level-6{ bottom: 0; left: 0;}
 .page3 .row-level-7{ top: 0; left: 0;}
-.page3 .row-level-7 .rule-wrap{ display: block; position: absolute; text-align: left;}
-.page3 .row-level-7 .rule-content{ left: 1.7rem; width: 6.8rem;}
-.page3 .row-level-7 .rule-content .text{ padding-top: .6rem;}
-.page3 .row-level-7 .rule-content .text p{ line-height: 150%; margin-bottom: .3rem;}
-.page3 .row-level-7 .rule-content .btn-confirm{ position: absolute; bottom: 0rem; left: 1rem;}
-.page3 .row-level-7 .rule-content .btn-back{ position: absolute; bottom: 0rem; left: 3.2rem;}
-.page3 .row-level-7 .rule-content .btn-confirm img,
-.page3 .row-level-7 .rule-content .btn-back img{ width: 1.796875rem;}
-.page3 .row-masker{ position: absolute; width: 100%; height: 15.75rem; left: 0; top: 0; opacity: 0.7; background-color: #000;}
 
 /*page4*/
 .page-list .row-level-3{ top: 11.265625rem; left: 0; width: 3.609375rem;}
@@ -187,8 +189,8 @@ transform: scaleX(1) skew(-15deg);}
 .share-cover{ position: absolute; left: 0; top: 0; width: 100%; display: none;}
 .share-cover .tl-light{ left: 2.6rem; top: 5.89rem;}
 .share-cover .tl-light .light{ width: 0.5rem;}
-.share-cover .rule-light-1{ left: 6.171875rem; top: 5.34rem; position: absolute;}
-.share-cover .rule-light-1 .light{ width: 0.1rem; height: 0.1rem;}
+.share-cover .rule-light-1{ left: 6.171875rem; top: 5.33rem; position: absolute;}
+.share-cover .rule-light-1 .light{ width: 0.1rem; height: 0.1rem; margin-right: 0.015625rem;}
 .share-cover .rule-light-2{ position: absolute; bottom: auto; top: 9.609375rem; left: 3.015625rem; width: 1.34375rem; height: 0.078125rem;}
 
 

@@ -5,89 +5,59 @@
 	<meta content="yes" name="apple-mobile-web-app-capable" />
 	<meta content="yes" name="apple-touch-fullscreen" />
 	<meta content="telephone=no,email=no" name="format-detection" />
-	<meta content="maximum-dpr=2" name="flexible" />
 	<script type="text/javascript" src="js/flexible.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<link rel="stylesheet" type="text/css" href="css/animate.css">
 	<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<title>Honda</title>
 </head>
 <body>
 	<div class="page-container">
-		<div class="masker stop-swiping"></div>
-		<div class="rules rule-wrap stop-swiping">
-			<div class="rule-content">
-				<h2><img src="images/rules_tit.png" /></h2>
-				<div class="text">
-					<p>1. 首先点击选择您支持的组别，企业组或学生组；</p>
-					<p>2. 进入后，通过“上下滑动”的方式浏览左右两排车队，点击您所支持的车队海报，进入投票界面；</p>
-					<p>3. 投票方式以手机【摇一摇】功能实现，即在规定的10秒钟内，您摇动手机频率越快，为所支持的车队投票越多；</p>
-					<p>4. 为保证活动公平，每位用户每天仅有1次投票机会；</p>
-					<p>5. 游戏结束后，将您所参与的游戏页面分享至您的朋友圈，可邀请您的朋友一同参与活动为您支持的车队投票。</p>
-					<p>6. 最终根据累计积分排名，选出每个组别人气最高的车队海报；</p>
-					<p>7. 参与过程中请务必注意安全，我司不对因参与游戏而导致的任何意外事件负责；</p>
-					<p>8. 本次活动最终解释权归Honda中国节能竞技大赛组委会“最佳人气奖”</p>
-					<p><br />活动日期: 2016年10月29日9:00至10月30日16:00截止</p>
-				</div>
-				<div class="btn-close"><img src="images/btn_back.png" /></div>
-			</div>
-			<div class="rule-light-1"></div>
-			<div class="rule-light-2 stretch"></div>
-			<div class="rule-bg"><img src="images/rules_bg.png" /></div>
-		</div>
 		<div class="swiper-container swiper-main">
 			<div class="swiper-wrapper view-list">
 				<div class="swiper-slide page page1 show">
+					<div class="content">
+						<div class="rule-light-1">
+							<div class="lights cf">
+								<div class="light light1"></div>
+								<div class="light light2"></div>
+								<div class="light light3"></div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="swiper-slide page page2">
-					<div class="row row-level-1"><img src="images/view_item2_1.jpg" /></div>
-					<div class="row row-level-2 animate" data-animate="fadeInUp"><img src="images/view_item2_2.png" /></div>
-					<div class="row row-level-3 animate delay1" data-animate="fadeIn"><img src="images/view_item2_3.png" /></div>
-					<div class="row row-level-4 animate" data-animate="fadeIn"><img src="images/view_item2_4.png" /></div>
-					<div class="row row-level-5">
-						<div class="text">
-							<div class="animate delay0_5" data-animate="fadeInUp"><img src="images/view_item2_text_01.png" /></div>
-							<div class="animate delay0_75" data-animate="fadeInUp"><img src="images/view_item2_text_02.png" /></div>
-							<div class="animate delay1" data-animate="fadeInUp"><img src="images/view_item2_text_03.png" /></div>
-							<div class="animate delay1_25" data-animate="fadeInUp"><img src="images/view_item2_text_04.png" /></div>
-							<div class="animate delay1_5" data-animate="fadeInUp"><img src="images/view_item2_text_05.png" /></div>
-						</div>
-					</div>
-					<div class="row row-level-6 animate delay2" data-animate="fadeIn"><div class="slide_btn delay2"><p><span></span></p></div></div>
+					<div style="position: absolute; left:0; top: 0; width:100%; height: 100%; background-color: #000; opacity: 0.7; display: none; " class="pop-rule btn-confirm">1</div>
+					<div>2</div>
 				</div>
-				<div class="swiper-slide page page3">
+				<div class="swiper-slide page page-list page8 stop-swiping">
 					<div class="row row-level-1"><img src="images/view_item2_1.jpg" /></div>
-					<div class="row row-level-2"><img src="images/view_item2_2.png" /></div>
-					<div class="row row-level-3"><img src="images/view_item2_3.png" /></div>
-					<div class="row row-level-4"><img src="images/view_item2_4.png" /></div>
-					<div class="row row-level-5">
-						<div class="text">
-							<div><img src="images/view_item2_text_01.png" /></div>
-							<div><img src="images/view_item2_text_02.png" /></div>
-							<div><img src="images/view_item2_text_03.png" /></div>
-							<div><img src="images/view_item2_text_04.png" /></div>
-							<div><img src="images/view_item2_text_05.png" /></div>
-						</div>
-					</div>
-					<div class="row row-level-7 animate" data-animate="fadeIn">
-						<div class="row-masker"></div>
-						<div class="rule-wrap" data-animate="fadeIn">
-							<div class="rule-content">
-								<h2><img src="images/rules_tit.png" /></h2>
-								<div class="text">
-									<p>1. 选择【企业组】或【学生组】</p>
-									<p>2. 选择你所支持的车队海报</p>
-									<p>3. 在10秒内快速度摇动手机，频率越快分数越高</p>
-									<p>4. 通过投票数累积，最终得票最高的车队获得 <br />“最佳人气奖”</p>
-									<p>5. 每人每天限玩一次</p>
-									<p>6. 分享到朋友圈可以让更多小伙伴为车队加油哟<br /><br /><br /><br /></p>
-									<p>欢迎参加本届大赛“最青春车队海报“评选活动</p>
-									<p>活动日期:2016年10月22日9:00至10月29日18:00截止</p>
-								</div>
-								<div class="btn-confirm"><img src="images/btn_confirm.png" /></div>
-								<div class="btn-back"><img src="images/btn_back.png" /></div>
+					<div class="row row-level-2 animate fast" data-animate="fadeIn"><img src="images/view_item4_1.jpg" /></div>
+					<div class="row row-level-3 animate fast delay0_25" data-animate="bounceInLeft"><img src="images/view_item4_2.png" /></div>
+					<div class="row row-level-4 animate fast" data-animate="bounceInLeft">
+						<div class="tl-light">
+							<div class="lights cf">
+								<div class="light light1"><img src="images/icon_light1_1.png" /></div>
+								<div class="light light2"><img src="images/icon_light1_2.png" /></div>
+								<div class="light light3"><img src="images/icon_light1_3.png" /></div>
 							</div>
+						</div>
+						<div><img src="images/view_item4_3.png" /></div>
+					</div>
+					<div class="row row-level-5 animate fast" data-animate="bounceInRight">
+						<div class="tr-light">
+							<div class="lights cf">
+								<div class="light light4"><img src="images/icon_light2_1.png" /></div>
+								<div class="light light5"><img src="images/icon_light2_2.png" /></div>
+								<div class="light light6"><img src="images/icon_light2_3.png" /></div>
+							</div>
+						</div>
+						<div><img src="images/view_item4_4.png" /></div>
+					</div>
+					<div class="row row-level-6 animate fast" data-animate="bounceInUp"><img src="images/view_item4_5.png" /></div>
+					<div class="row row-level-7 animate fast delay0_5" data-animate="bounceIn">
+						<div class="inner shake-vote">
 							<div class="rule-light-1">
 								<div class="lights cf">
 									<div class="light light1"></div>
@@ -96,20 +66,37 @@
 								</div>
 							</div>
 							<div class="rule-light-2 stretch"></div>
-							<div class="rule-bg"><img src="images/rules_bg.png" /></div>
+							<div class="status status-1"><img src="images/view_item8_3.png" /></div>
+							<div class="status status-2">
+								<div class="number">10</div>
+								<div><img src="images/view_item8_4.png" /></div>
+							</div>
+							<div class="status status-3">
+								<div class="number">200</div>
+								<div><img src="images/view_item8_5.png" /></div>
+							</div>
+							<div><img src="images/view_item8_2.png" /></div>
 						</div>
 					</div>
-				</div>
-				<div class="swiper-slide page page2">
-					<div class="lights cf">
-						<div class="light light1"></div>
-						<div class="light light2"></div>
-						<div class="light light3"></div>
+					<div class="row share-btn"><img src="images/view_item8_6.png" /></div>
+					<div class="row share-cover">
+						<div class="tl-light">
+							<div class="lights cf">
+								<div class="light light1"><img src="images/icon_light1_1.png" /></div>
+								<div class="light light2"><img src="images/icon_light1_2.png" /></div>
+								<div class="light light3"><img src="images/icon_light1_3.png" /></div>
+							</div>
+						</div>
+						<div class="rule-light-1">
+							<div class="lights cf">
+								<div class="light light1"></div>
+								<div class="light light2"></div>
+								<div class="light light3"></div>
+							</div>
+						</div>
+						<div class="rule-light-2 stretch"></div>
+						<div><img src="images/share_cover.png" /></div>
 					</div>
-				</div>
-				<div class="swiper-slide page page3">
-					<p>用力摇一摇你手机</p>  
-					<div class="roll-animate"></div>
 				</div>
 				<div class="swiper-slide page page4">
 					<div class="scroll-wrap">
@@ -139,52 +126,11 @@
 		</div>
 	</div>
 	
-	<audio id="musicBox" style="display:none;" src="http://www.w3school.com.cn/i/horse.mp3" >
-
+	<audio style="display:none;" id="musicBox" controls="controls" src="media/audio.mp3" >
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/preloadjs.min.js"></script>
 	<script type="text/javascript" src="js/swiper.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/underscore.js"></script>
-	<script type="text/javascript">
-		window.addEventListener('touchstart', touchstartHandler, false);
-		function touchstartHandler(){
-			$("#musicBox")[0].load(); 
-            $("#musicBox")[0].play(); 
-		}
-
-		var SHAKE_THRESHOLD = 3000;  
-        var last_update = 0;  
-        var x = y = z = last_x = last_y = last_z = 0;  
-        function init() {  
-            if (window.DeviceMotionEvent) {  
-                window.addEventListener('devicemotion', deviceMotionHandler, false);  
-            } else {  
-                alert('not support mobile event');  
-            }  
-        }  
-        init()
-
-        function deviceMotionHandler(eventData) {  
-            var acceleration = eventData.accelerationIncludingGravity;  
-            var curTime = new Date().getTime();  
-            if ((curTime - last_update) > 100) {  
-                var diffTime = curTime - last_update;  
-                last_update = curTime;  
-                x = acceleration.x;  
-                y = acceleration.y;  
-                z = acceleration.z;  
-                var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;  
-  
-                if (speed > SHAKE_THRESHOLD) {  
-                    $("#musicBox")[0].load();  
-                    $("#musicBox")[0].play();    
-                }  
-                last_x = x;  
-                last_y = y;  
-                last_z = z;  
-            }  
-        }  
-	</script>
 </body>
 </html>
