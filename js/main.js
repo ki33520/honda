@@ -141,7 +141,7 @@ $(function(){
 				if(e.activeIndex === 2 || e.activeIndex === 3 || e.activeIndex === 4 || e.activeIndex === 5 || e.activeIndex === 6){
 					$("#musicBox")[0].play();
 				}
-				if(e.activeIndex === 7){
+				if(e.activeIndex === 6){
 					startShake();
 				}
 				$('.page').eq(curPage).find('.scroll-container').each(function(){
@@ -279,13 +279,12 @@ $(function(){
 
 
 
-	function worksVote = function(list){
+	function worksVote(list){
 		this.list = list ? list : window.worksList;
 		this.listWraps = $('.works-wrap .works-list');
 	};
 	worksVote.prototype = {
 		setLayout: function(){
-			{id:1, name:"summer1", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
 			$(this.list).each(function(index,item){
 				var li = $('<li><div class="number">编号:'+(index+1)+'</div><div class="img-wrap"><div class="img-cover"></div><div><img src="'+item.img+'" /></div></div><div class="name">名称:'+item.name+'</div><div class="dis">'+item.voteNum+'</div></li>');
 				li.appendTo(this.listWraps.eq(item.group));

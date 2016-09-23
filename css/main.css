@@ -187,13 +187,14 @@ transform: scaleX(1) skew(-15deg);}
 .page8 .row-level-7 .status-2 .number{ position: absolute; left: -1rem; top: 0; color: #fff; width: 3.5rem; font-size: 3rem; font-weight: bold; line-height: 140%; font-family: sans-serif; text-align: right;}
 .page8 .row-level-7 .status-3{ position: absolute; width: 4.359375rem; height: 4.71875rem; left: 1.671875rem; top: 1.78125rem; display: none;}
 .page8 .row-level-7 .status-3 .number{ position: absolute; left: 2.5rem; top: 4.035rem; font-size: .33rem; width: 0.66rem; text-align: center; color: #fff; line-height: 120%;}
-.share-btn{ position: absolute; left: 4.0625rem; top: 12.28125rem; width: 1.796875rem; }
-.share-cover{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: url(../images/share_cover.png) center center no-repeat; background-size: cover; display: none;}
-.share-cover .tl-light{ left: 2.6rem; top: 5.89rem;}
-.share-cover .tl-light .light{ width: 0.5rem;}
-.share-cover .rule-light-1{ left: 6.171875rem; top: 5.325rem; position: absolute;}
+.share-btn{ position: absolute; left: 1.3rem; top: 6.28125rem; width: 1.796875rem; }
+.share-cover{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-image: url(../images/share_cover.png); background-position: center center; background-repeat: no-repeat; background-size: 100% auto; background-color: rgba(0,0,0,0.75); display: none;}
+.share-cover .inner{ position: absolute; width: 6.078125rem; height: 5.15625rem; left: 50%; top: 50%; margin-left: -3.0390625rem; margin-top: -2.578125rem;}
+.share-cover .tl-light{ left: 0.64rem; top: 0.595rem;}
+.share-cover .tl-light .light{ width: 0.495rem;}
+.share-cover .rule-light-1{ left: 4.2rem; top: 0.02rem; position: absolute;}
 .share-cover .rule-light-1 .light{ width: 0.11rem; height: 0.11rem; margin-right: 0.015625rem;}
-.share-cover .rule-light-2{ position: absolute; bottom: auto; top: 9.609375rem; left: 3.015625rem; width: 1.34375rem; height: 0.078125rem;}
+.share-cover .rule-light-2{ position: absolute; bottom: auto; top: 4.309375rem; left: 1.06rem; width: 1.34375rem; height: 0.078125rem;}
 
 
 
