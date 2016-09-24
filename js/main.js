@@ -199,9 +199,9 @@ $(function(){
 		myPageSwiper.unlockSwipeToNext();
 		myPageSwiper.slideNext();
 	});
-	$('.pd-list li').on('click',function(){
+	$('.btn-back-list').on('click',function(){
 		myPageSwiper.unlockSwipeToNext();
-		myPageSwiper.slideTo(5);
+		myPageSwiper.slideTo(3);
 	});
 	$('.btn-back-choose').on('click',function(){
 		myPageSwiper.unlockSwipeToNext();
@@ -249,7 +249,6 @@ $(function(){
 					shake_bl = true;
 					$('.status-1').hide();
 					$('.status-2').show();
-					$('.shake-vote').addClass('roll-animate');
 					countNumber(10);
 				}
 			}
@@ -277,22 +276,72 @@ $(function(){
 	}
 	
 
-
+	/* data */
+	var ajaxUrl = 'http://hide.dzhcn.cn/honda/callback.php',
+		boardType = 'Leaderboard1',
+		groupNames = ['personal','company'];
+	function selectGroup(){
+		var self = this;
+		this.group = 1;
+		this.name = groupNames[0];
+		$('.type-btn').each(function(index,item){
+			$(item).on('click',function(){
+				self.group = index+1;
+				self.name = groupNames[index];
+				works_vote.setWorksList();
+				works_vote.setLeaderBoard();
+			});
+		})
+	}
+	var select_group = new selectGroup();
 
 	function worksVote(list){
 		this.list = list ? list : window.worksList;
 		this.listWraps = $('.works-wrap .works-list');
+		this.boardWrap = $('.leader-board');
+		this.setWorksList();
 	};
 	worksVote.prototype = {
-		setLayout: function(){
-			$(this.list).each(function(index,item){
-				var li = $('<li><div class="number">编号:'+(index+1)+'</div><div class="img-wrap"><div class="img-cover"></div><div><img src="'+item.img+'" /></div></div><div class="name">名称:'+item.name+'</div><div class="dis">'+item.voteNum+'</div></li>');
-				li.appendTo(this.listWraps.eq(item.group));
+		setLeaderBoard: function(){
+			var self = this;
+			$.ajax({
+				url: ajaxUrl,
+				type: "post",
+				data: {type: boardType},
+				dataType: "json",
+				error: function(request){
+					console.log(request);
+				},
+				success: function(data){
+					if(data.status === 1){
+						var list_data = data[select_group.name];
+						self.boardWrap.empty();
+						$(list_data).each(function(index,item){
+							var list_node = _.find(self.list, function(node){ return node.name == item.Name; });
+							var li = $('<li><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div><img src="+list_node.img+" /></div></div><div class="text"><div class="name">名称:'+item.Name+'</div><div class="dis">加油量:'+item.vote+'ml</div></div></div></li>');
+							li.appendTo(self.boardWrap);
+						});
+					}else{
+						console.log(data)
+					}
+				}
 			})
 		},
-		init: function(){
-			this.setLayout();
+		setWorksList: function(){
+			var self = this;
+			self.listWraps.empty();
+			var ind = 0;
+			$(this.list).each(function(index,item){
+				if(item.group === select_group.group){
+					var li = $('<li><div class="number">编号:'+(index+1)+'</div><div class="img-wrap"><div class="img-cover"></div><div><img src="'+item.img+'" /></div></div><div class="name">名称:'+item.name+'</div><div class="dis">加油量:'+item.voteNum+'</div></li>');
+					li.on('click',function(){
+						myPageSwiper.unlockSwipeToNext();
+						myPageSwiper.slideTo(5);
+					});
+					li.appendTo(self.listWraps.eq(ind++%2));
+				}
+			})
 		}
 	}
-	new worksVote(window.worksList);
+	var works_vote = new worksVote(window.worksList);
 });
