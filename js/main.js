@@ -141,9 +141,11 @@ $(function(){
 				if(e.activeIndex === 2 || e.activeIndex === 3 || e.activeIndex === 4 || e.activeIndex === 5 || e.activeIndex === 6){
 					$("#musicBox")[0].play();
 				}
-				if(e.activeIndex === 6){
-					startShake();
+				if(e.activeIndex === 5){
+					works_vote.setWorksNode();
 				}
+				startShake(e.activeIndex);
+				
 				$('.page').eq(curPage).find('.scroll-container').each(function(){
 					new Swiper(this,{
 						scrollbar: '.swiper-scrollbar',
@@ -169,7 +171,7 @@ $(function(){
 		
 	};
 
-	window.addEventListener('touchstart', touchstartHandler, false);
+	window.addEventListener('touchstart', touchstartHandler);
 	function touchstartHandler(){
 		if(!($("#musicBox").hasClass('loaded'))){
 			$("#musicBox").addClass('loaded');
@@ -226,9 +228,13 @@ $(function(){
 	var last_update = 0;
 	var shake_bl = false;
 	var x = y = z = last_x = last_y = last_z = shake_num = 0;
-	function startShake(){
+	function startShake(ind){
 		if (window.DeviceMotionEvent) {
-			window.addEventListener('devicemotion', deviceMotionHandler, false);
+			if(ind===6){
+				window.addEventListener('devicemotion', deviceMotionHandler);
+			}else{
+				window.removeEventListener('devicemotion', deviceMotionHandler);
+			}
 		} else {
 			alert('not support mobile event');
 		}
@@ -267,19 +273,34 @@ $(function(){
 			}
 		},1000)
 	}
+	/* data */
+	var ajaxUrl = 'http://hide.dzhcn.cn/honda/callback.php',
+		boardType = 'Leaderboard1',
+		voteType = "Vote",
+		groupNames = ['personal','company'];
+
 	function voteFn(shake_num){
 		var vote_num = shake_num*6 >200 ? 200 : shake_num*6;
 		$('.status').hide();
 		$('.status-3 .number').text(vote_num);
 		$('.status-3').show();
 		$('.shake-vote').removeClass('roll-animate');
-	}
-	
+		console.log(select_group)
+		$.ajax({
+			url: ajaxUrl,
+			type: "post",
+			data: {type: voteType,worksID:"",votes:vote_num,worksType:select_group.group},
+			dataType: "json",
+			error: function(request){
+				console.log(request);
+			},
+			success: function(data){
+				
+			}
+		});
 
-	/* data */
-	var ajaxUrl = 'http://hide.dzhcn.cn/honda/callback.php',
-		boardType = 'Leaderboard1',
-		groupNames = ['personal','company'];
+	}
+
 	function selectGroup(){
 		var self = this;
 		this.group = 1;
@@ -288,6 +309,7 @@ $(function(){
 			$(item).on('click',function(){
 				self.group = index+1;
 				self.name = groupNames[index];
+				self.node = works_vote.list[0];
 				works_vote.setWorksList();
 				works_vote.setLeaderBoard();
 			});
@@ -317,15 +339,20 @@ $(function(){
 						var list_data = data[select_group.name];
 						self.boardWrap.empty();
 						$(list_data).each(function(index,item){
-							var list_node = _.find(self.list, function(node){ return node.name == item.Name; });
-							var li = $('<li><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div><img src="+list_node.img+" /></div></div><div class="text"><div class="name">名称:'+item.Name+'</div><div class="dis">加油量:'+item.vote+'ml</div></div></div></li>');
+							var list_node = _.find(self.list, function(node){ return node.id == item.id; });
+							var li = $('<li><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div><img src='+list_node.img+' /></div></div><div class="text"><div class="name">名称:'+item.Name+'</div><div class="dis">加油量:'+item.vote+'ml</div></div></div></li>');
+							li.on('click',function(){
+								select_group.node = list_node;
+								myPageSwiper.unlockSwipeToNext();
+								myPageSwiper.slideTo(5);
+							});
 							li.appendTo(self.boardWrap);
 						});
 					}else{
 						console.log(data)
 					}
 				}
-			})
+			});
 		},
 		setWorksList: function(){
 			var self = this;
@@ -335,12 +362,20 @@ $(function(){
 				if(item.group === select_group.group){
 					var li = $('<li><div class="number">编号:'+(index+1)+'</div><div class="img-wrap"><div class="img-cover"></div><div><img src="'+item.img+'" /></div></div><div class="name">名称:'+item.name+'</div><div class="dis">加油量:'+item.voteNum+'</div></li>');
 					li.on('click',function(){
+						select_group.node = item;
+						console.log(select_group)
 						myPageSwiper.unlockSwipeToNext();
 						myPageSwiper.slideTo(5);
 					});
 					li.appendTo(self.listWraps.eq(ind++%2));
 				}
 			})
+		},
+		setWorksNode: function(){
+			var node = select_group.node;
+			$('.works-node .node-img').attr('src',node.img);
+			$('.works-node .node-id').text(node.id);
+			$('.works-node .node-vote').text(node.vote);
 		}
 	}
 	var works_vote = new worksVote(window.worksList);
