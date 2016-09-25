@@ -142,6 +142,8 @@ transform: scaleX(1) skew(-15deg);}
 .pd-list-2{ float: left; padding-left: 0.0625rem; padding-right: 0;}
 .pd-list li{ width: 2.890625rem; height: 2.859375rem; position: relative;}
 .pd-list .img-wrap{ position: relative; height: 1.96875rem; width: 100%;}
+.pd-list .img-wrap .img{ height: 100%; width: 100%; overflow: hidden;}
+.pd-list .img-wrap .img img{ height: 100%; width: auto; margin-left: -0.2109375rem;}
 .pd-list li .number{ background:rgba(240,11,11,0.6); width: 1.046875rem; height: 0.484375rem; position: absolute; left: 0; top: 0; z-index: 9; color: #fff; font-size: 0.3rem; line-height: 0.484375rem; text-align: center;}
 .pd-list li .img-cover{ background-image: url(../images/img_cover.png); background-repeat: no-repeat; background-size: 100%; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background-position: left top;}
 .pd-list li .name{ color: #fff; font-size: 0.3rem; line-height: 120%; padding-top: 0.05rem;}
@@ -155,9 +157,10 @@ transform: scaleX(1) skew(-15deg);}
 .page5 .scroll-wrap .swiper-slide{ padding: 0 0.40625rem;}
 .page5 .pd-list{ float: none; padding: 0; width: 100%;}
 .page5 .pd-list li{ display: flex; width: 100%; height: auto;}
-.page5 .pd-list li .rank{ color: #fff; font-size: .5rem; line-height: 1.3rem; width: .6rem; text-align: center;}
+.page5 .pd-list li .rank{ color: #fff; font-size: .5rem; line-height: 1.3rem; width: .68rem; text-align: center;}
 .page5 .pd-list li .img-wrap{ width: 1.65625rem; height: 1.15625rem; margin-right: .2rem;}
 .page5 .pd-list li .img-wrap .img-cover{ background-image: url(../images/img_cover_2.png);}
+.page5 .pd-list li .img-wrap .img img{ margin-left: -0.140625rem;}
 .page5 .tit{ padding: 0.421875rem 0; border-bottom: 0.03125rem solid #fff;}
 .page5 .tit img{ margin: 0 auto; width: 3.078125rem;}
 .page5 .item-right{ display: flex; flex: 1; padding: 0.0625rem 0; border-bottom: 0.015625rem solid #fff;}
@@ -175,6 +178,8 @@ transform: scaleX(1) skew(-15deg);}
 .icon-shake{ position: absolute; left: 1.546875rem; top: 6.25rem; width: 1.546875rem; height: 2.125rem;}
 .btn-back-choose{ position: absolute; bottom: -0.8125rem; left: 1.78125rem; width: 1.796875rem;}
 .btn-start-shake{ position: absolute; bottom: -0.8125rem; left: 4.078125rem; width: 1.796875rem;}
+.img2-cover{ background: none; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background-position: left top;}
+.page6 .pd-img .img{ width: 6.8125rem; padding-top: 0.640625rem; padding-left: 0.546875rem;}
 
 /*page7*/
 .page7 .row-level-7{ left: 1.15625rem; top: 4.171875rem; width: 7.375rem; }

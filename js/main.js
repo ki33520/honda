@@ -305,11 +305,11 @@ $(function(){
 		var self = this;
 		this.group = 1;
 		this.name = groupNames[0];
+		this.node = window.worksList[0];
 		$('.type-btn').each(function(index,item){
 			$(item).on('click',function(){
 				self.group = index+1;
 				self.name = groupNames[index];
-				self.node = works_vote.list[0];
 				works_vote.setWorksList();
 				works_vote.setLeaderBoard();
 			});
@@ -340,7 +340,7 @@ $(function(){
 						self.boardWrap.empty();
 						$(list_data).each(function(index,item){
 							var list_node = _.find(self.list, function(node){ return node.id == item.id; });
-							var li = $('<li><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div><img src='+list_node.img+' /></div></div><div class="text"><div class="name">名称:'+item.Name+'</div><div class="dis">加油量:'+item.vote+'ml</div></div></div></li>');
+							var li = $('<li><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div class="img"><img src='+list_node.img+' /></div></div><div class="text"><div class="name">名称:'+item.Name+'</div><div class="dis">加油量:'+item.vote+'ml</div></div></div></li>');
 							li.on('click',function(){
 								select_group.node = list_node;
 								myPageSwiper.unlockSwipeToNext();
@@ -360,7 +360,7 @@ $(function(){
 			var ind = 0;
 			$(this.list).each(function(index,item){
 				if(item.group === select_group.group){
-					var li = $('<li><div class="number">编号:'+(index+1)+'</div><div class="img-wrap"><div class="img-cover"></div><div><img src="'+item.img+'" /></div></div><div class="name">名称:'+item.name+'</div><div class="dis">加油量:'+item.voteNum+'</div></li>');
+					var li = $('<li><div class="number">编号:'+(index+1)+'</div><div class="img-wrap"><div class="img-cover"></div><div class="img"><img src="'+item.img+'" /></div></div><div class="name">名称:'+item.name+'</div><div class="dis">加油量:'+item.voteNum+'</div></li>');
 					li.on('click',function(){
 						select_group.node = item;
 						console.log(select_group)
@@ -373,6 +373,7 @@ $(function(){
 		},
 		setWorksNode: function(){
 			var node = select_group.node;
+			console.log(node)
 			//$('.works-node .node-img').attr('src',node.img);
 			$('.works-node .node-id').text(node.id);
 			$('.works-node .node-vote').text(node.vote);
