@@ -123,6 +123,18 @@ $(function(){
 			},
 			onSlideChangeStart: function(e) {
 				$('.page').find('.animate').hide();
+				if(e.activeIndex === 3){
+					works_vote.setWorksList();
+				}
+				if(e.activeIndex === 4){
+					works_vote.setLeaderBoard();
+				}
+				if(e.activeIndex === 5){
+					works_vote.setWorksNode();
+				}
+				if(e.activeIndex === 6){
+					works_vote.setVote();
+				}
 			},
 			onSlideChangeEnd: function(e) {
 				$('.row-rule').hide();
@@ -141,9 +153,7 @@ $(function(){
 				if(e.activeIndex === 2 || e.activeIndex === 3 || e.activeIndex === 4 || e.activeIndex === 5 || e.activeIndex === 6){
 					$("#musicBox")[0].play();
 				}
-				if(e.activeIndex === 5){
-					works_vote.setWorksNode();
-				}
+				
 				startShake(e.activeIndex);
 				
 				$('.page').eq(curPage).find('.scroll-container').each(function(){
@@ -211,7 +221,11 @@ $(function(){
 	});
 	$('.btn-back-choose').on('click',function(){
 		myPageSwiper.unlockSwipeToNext();
-		myPageSwiper.slideTo(3);
+		if(myPageSwiper.previousIndex===4){
+			myPageSwiper.slideTo(4);
+		}else{
+			myPageSwiper.slideTo(3);
+		}
 	});
 	$('.btn-start-shake').on('click',function(){
 		myPageSwiper.unlockSwipeToNext();
@@ -267,7 +281,17 @@ $(function(){
 			last_z = z;
 		}
 	}
+	$('.status-1').on('click',function(){
+		if(!shake_bl){
+			shake_bl = true;
+			$('.status-1').hide();
+			$('.status-2').show();
+			countNumber(10);
+		}
+	});
+
 	function countNumber(num){
+		$('.status-2 .number').text(num);
 		setTimeout(function(){
 			$('.status-2 .number').text(--num);
 			if(num>0){
@@ -277,32 +301,56 @@ $(function(){
 			}
 		},1000)
 	}
+	var pop = {
+		wrap: $('<div class="pop-alert"><div class="text"></div></div>'),
+		show: function(text){
+			this.wrap.show().find('.text').text(text);
+		},
+		alert: function(text){
+			this.wrap.fadeIn(500).delay(1000).fadeOut(500).find('.text').text(text);
+		},
+		hide: function(){
+			this.wrap.hide().find('.text').text('');
+		}
+	}
+	pop.wrap.appendTo('body');
 	/* data */
 	var ajaxUrl = 'http://hide.dzhcn.cn/honda/callback.php',
 		boardType = 'Leaderboard1',
 		voteType = "Vote",
+		oilType = "Oil",
 		groupNames = ['personal','company'];
 
 	function voteFn(shake_num){
+		var shake_num = shake_num ? shake_num : 1;
 		var vote_num = shake_num*6 >200 ? 200 : shake_num*6;
-		$('.status').hide();
-		$('.status-3 .number').text(vote_num);
-		$('.status-3').show();
-		$('.shake-vote').removeClass('roll-animate');
-		console.log(select_group)
+		var node = select_group.node;
 		$.ajax({
 			url: ajaxUrl,
 			type: "post",
-			data: {type: voteType,worksID:"",votes:vote_num,worksType:select_group.group},
+			data: {type: voteType,openid:'a',worksID:node.id,votes:vote_num,worksType:select_group.group},
 			dataType: "json",
 			error: function(request){
 				console.log(request);
 			},
 			success: function(data){
-				
+				if(data.status === 1){
+					$('.status-3 .number').text(vote_num);
+				}else if(data.status === 2){
+					$('.status-3 .number').text(0);
+					pop.alert('当天已对投过作品');
+				}else if(data.status === 3){
+					$('.status-3 .number').text(0);
+					pop.alert('所投作品id与作品所属类');
+				}else if(data.status === 0){
+					$('.status-3 .number').text(0);
+					pop.alert('投票失败');
+				}
+				$('.shake-vote').removeClass('roll-animate');
+				$('.status').hide();
+				$('.status-3').show();
 			}
 		});
-
 	}
 
 	function selectGroup(){
@@ -314,8 +362,6 @@ $(function(){
 			$(item).on('click',function(){
 				self.group = index+1;
 				self.name = groupNames[index];
-				works_vote.setWorksList();
-				works_vote.setLeaderBoard();
 			});
 		})
 	}
@@ -343,8 +389,8 @@ $(function(){
 						var list_data = data[select_group.name];
 						self.boardWrap.empty();
 						$(list_data).each(function(index,item){
-							var list_node = _.find(self.list, function(node){ return node.id == item.id; });
-							var li = $('<li><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div class="img"><img src='+list_node.img+' /></div></div><div class="text"><div class="name">名称:'+item.Name+'</div><div class="dis">加油量:'+item.vote+'ml</div></div></div></li>');
+							var list_node = _.find(self.list, function(node){ return node.id == Number(item.id); });
+							var li = $('<li><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div class="img"><img src='+list_node.img+' /></div></div><div class="text"><div class="name">名称: '+item.Name+'</div><div class="dis">加油量: '+item.vote+'ml</div></div></div></li>');
 							li.on('click',function(){
 								select_group.node = list_node;
 								myPageSwiper.unlockSwipeToNext();
@@ -361,26 +407,46 @@ $(function(){
 		setWorksList: function(){
 			var self = this;
 			self.listWraps.empty();
-			var ind = 0;
-			$(this.list).each(function(index,item){
-				if(item.group === select_group.group){
-					var li = $('<li><div class="number">编号:'+(index+1)+'</div><div class="img-wrap"><div class="img-cover"></div><div class="img"><img src="'+item.img+'" /></div></div><div class="name">名称:'+item.name+'</div><div class="dis">加油量:'+item.voteNum+'</div></li>');
-					li.on('click',function(){
-						select_group.node = item;
-						console.log(select_group)
-						myPageSwiper.unlockSwipeToNext();
-						myPageSwiper.slideTo(5);
-					});
-					li.appendTo(self.listWraps.eq(ind++%2));
+			$.ajax({
+				url: ajaxUrl,
+				type: "post",
+				data: {type: oilType},
+				dataType: "json",
+				error: function(request){
+					console.log(request);
+				},
+				success: function(data){
+					if(data.status === 1){
+						var oilArr = _.union(data.company,data.personal);
+						var ind = 0;
+						$(self.list).each(function(index,item){
+							item.vote = _.find(oilArr, function(node){ return Number(node.id) == item.id; }).vote;
+							if(item.group === select_group.group){
+								var li = $('<li><div class="number">编号:'+(index+1)+'</div><div class="img-wrap"><div class="img-cover"></div><div class="img"><img src="'+item.img+'" /></div></div><div class="name">名称: '+item.name+'</div><div class="dis">加油量: '+item.vote+'ml</div></li>');
+								li.on('click',function(){
+									select_group.node = item;
+									myPageSwiper.unlockSwipeToNext();
+									myPageSwiper.slideTo(5);
+								});
+								li.appendTo(self.listWraps.eq(ind++%2));
+							}
+						});
+						self.setWorksNode();
+					}
 				}
-			})
+			});
 		},
 		setWorksNode: function(){
 			var node = select_group.node;
-			console.log(node)
 			$('.works-node .node-img').attr('src',node.img);
 			$('.works-node .node-id').text(node.id);
+			$('.works-node .node-dis').text(node.des);
 			$('.works-node .node-vote').text(node.vote);
+		},
+		setVote: function(){
+			shake_bl = false;
+			$('.status').hide();
+			$('.status-1').show();
 		}
 	}
 	var works_vote = new worksVote(window.worksList);

@@ -1,34 +1,14 @@
-window.worksList = [
-	{id:1, name:"a1", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:2, name:"a2", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:3, name:"a3", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:4, name:"a4", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:5, name:"a5", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:6, name:"a6", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:7, name:"a7", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:8, name:"a8", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:9, name:"a9", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:10, name:"a10", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:11, name:"a11", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:12, name:"a12", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:13, name:"a13", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:14, name:"a14", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:15, name:"a15", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:16, name:"a16", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:17, name:"a17", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:18, name:"a18", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:19, name:"a19", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:20, name:"a20", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:21, name:"a21", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:22, name:"a22", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:23, name:"a23", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:24, name:"a24", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:25, name:"a25", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:26, name:"a26", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:27, name:"a27", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:28, name:"a28", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:29, name:"a29", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:30, name:"a30", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2},
-	{id:31, name:"a31", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
-	{id:32, name:"a32", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:2}
-]
+window.worksList = new Array(153); //{id:1, name:"a1", des: "这是一个Honda的季节", img:"images/works_1.jpg", group:1},
+
+$(window.worksList).each(function(index,item){
+	var group = (index+1)<83 ? 1: 2;
+	var name = (index+1)<83 ? 'a'+(index+1): 'b'+(index+1);
+	var img = 'images/works_'+(index+1)+'.jpg';
+	window.worksList[index] = {
+		id: (index+1),
+		name: name,
+		des: '这是一个Honda的季节',
+		img: 'images/works_1.jpg',
+		group: group
+	}
+});

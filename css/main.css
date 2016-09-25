@@ -33,7 +33,7 @@ body{ position: relative; text-align: left; background-color: #780c17; font-fami
 .scroll-container{ width: 100%; height: 100%; margin: 0 auto; position: relative; overflow: hidden; z-index: 1;}
 .swiper-slide {}
 .scroll-container .swiper-slide { height: auto; -webkit-box-sizing: border-box; box-sizing: border-box;}
-.scroll-wrap{ display: flex; height: 8.578125rem; width: 6.53125rem; position: absolute; left: 0.546875rem; top: 2.890625rem;}
+.scroll-wrap{ display: flex; height: 8.99rem; width: 6.53125rem; position: absolute; left: 0.546875rem; top: 2.890625rem;}
 .scroll-wrap .scroll-container{ flex: 1;}
 .scroll-wrap .scroll-container .swiper-slide{ background-color: transparent;}
 .scroll-container.swiper-container-vertical>.swiper-scrollbar{ width: 0.28125rem; right: 0; height: 100%; top: 0;}
@@ -67,6 +67,9 @@ transform: scaleX(1) skew(-15deg);}
 .lights .light{ float: left; display: none;}
 .rule-light-1 .lights{ }
 .rule-light-1 .lights .light{ width: 0.171875rem; height: 0.15625rem; background: url(../images/icon_light_1.png) no-repeat left top; background-size: 100%; margin-left: -0.015625rem;}
+
+.pop-alert{ position: absolute; width: 5rem; height: 1rem; left: 50%; top: 50%; margin-top: -0.6rem; margin-left: -2.7rem; font-size: 0.3rem; line-height: 150%; padding: .2rem; background: rgba(0,0,0,0.75); color: #fff; z-index: 999; border-radius: 0.1rem; display: none;}
+.pop-alert .text{ display: flex; justify-content: center; align-items:center; width: 100%; height: 100%;}
 
 
 /*page1*/
@@ -144,7 +147,7 @@ transform: scaleX(1) skew(-15deg);}
 .pd-list .img-wrap{ position: relative; height: 1.96875rem; width: 100%;}
 .pd-list .img-wrap .img{ height: 100%; width: 100%; overflow: hidden;}
 .pd-list .img-wrap .img img{ height: 100%; width: auto; margin-left: -0.2109375rem;}
-.pd-list li .number{ background:rgba(240,11,11,0.6); width: 1.046875rem; height: 0.484375rem; position: absolute; left: 0; top: 0; z-index: 9; color: #fff; font-size: 0.3rem; line-height: 0.484375rem; text-align: center;}
+.pd-list li .number{ background:rgba(240,11,11,0.6); width: 1.146875rem; height: 0.484375rem; position: absolute; left: 0; top: 0; z-index: 9; color: #fff; font-size: 0.3rem; line-height: 0.484375rem; text-align: center;}
 .pd-list li .img-cover{ background-image: url(../images/img_cover.png); background-repeat: no-repeat; background-size: 100%; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background-position: left top;}
 .pd-list li .name{ color: #fff; font-size: 0.3rem; line-height: 120%; padding-top: 0.05rem;}
 .pd-list li .dis{ color: #fff; font-size: 0.3rem; line-height: 120%;}
@@ -173,6 +176,8 @@ transform: scaleX(1) skew(-15deg);}
 /*page6*/
 .page6 .row-level-7{ left: 1.109375rem; top: 3.34375rem; width: 7.78125rem;}
 .page6 .pd-img{ position: absolute; left: 0; top: 0; width: 100%;}
+.page6 .dis{ position: absolute; left: 1.45rem; top: 4.85rem; width: 3.6rem; color: #fff; font-size: .233rem; line-height: 180%;}
+.page6 .dis span{ display: flex; justify-content: center; align-items:center; width: 100%; height: 0.8125rem;}
 .page6 .number{ position: absolute; left: 5.15625rem; top: 4.78125rem; color: #fff; font-size: 0.4rem; line-height: 140%;}
 .page6 .vote{ position: absolute; left: 5.15625rem; top: 5.3125rem; color: #fff; font-size: 0.3rem; line-height: 140%;}
 .icon-shake{ position: absolute; left: 1.546875rem; top: 6.25rem; width: 1.546875rem; height: 2.125rem;}
