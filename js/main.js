@@ -201,6 +201,10 @@ $(function(){
 		myPageSwiper.unlockSwipeToNext();
 		myPageSwiper.slideNext();
 	});
+	$('.leader-board li').on('click',function(){
+		myPageSwiper.unlockSwipeToNext();
+		myPageSwiper.slideTo(5);
+	});
 	$('.btn-back-list').on('click',function(){
 		myPageSwiper.unlockSwipeToNext();
 		myPageSwiper.slideTo(3);
@@ -374,7 +378,7 @@ $(function(){
 		setWorksNode: function(){
 			var node = select_group.node;
 			console.log(node)
-			//$('.works-node .node-img').attr('src',node.img);
+			$('.works-node .node-img').attr('src',node.img);
 			$('.works-node .node-id').text(node.id);
 			$('.works-node .node-vote').text(node.vote);
 		}
