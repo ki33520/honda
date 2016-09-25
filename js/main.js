@@ -68,25 +68,25 @@ if(manifest.length>0){
 	handleComplete();
 };
 
-function aniFunc(page) {
-	$(page).find('.lights').each(function(index,item){
-		var lightFlash = function(itm,ind){
+var lightFlash = function(itm,ind){
+	setTimeout(function(){
+		if(ind>=$(itm).find('.light').length){
+			ind=0;
 			setTimeout(function(){
-				if(ind>=$(item).find('.light').length){
-					ind=0;
-					setTimeout(function(){
-						$(item).find('.light').fadeOut(100);
-						lightFlash(itm,ind)
-					},1000)
-				}else{
-					$(item).find('.light').eq(ind).fadeIn(200);
-					ind++;
-					lightFlash(itm,ind)
-				}
-			},1000);
+				$(itm).find('.light').fadeOut(100);
+				lightFlash(itm,ind)
+			},1000)
+		}else{
+			$(itm).find('.light').eq(ind).fadeIn(200);
+			ind++;
+			lightFlash(itm,ind)
 		}
-		lightFlash(item,0);
-	})
+	},1000);
+}
+$('.lights').each(function(index,item){
+	lightFlash(item,0);
+})
+function aniFunc(page) {
 	$(page).addClass('show').find('.animate').each(function() {
 		$(this).show().addClass($(this).attr('data-animate') + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
 				$(this).removeClass($(this).attr('data-animate') + ' animated');

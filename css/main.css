@@ -65,8 +65,8 @@ transform: scaleX(1) skew(-15deg);}
 
 .logo{ position: absolute; left: 0; top: 0; width: 3.125rem; z-index: 95;}
 .lights .light{ float: left; display: none;}
-.rule-light-1 .lights{ padding-top: 0.01rem; }
-.rule-light-1 .lights .light{ width: 0.13rem; height: 0.13rem; background: #e4131a; border-radius: 100%; margin-right: 0.03125rem; box-shadow: 0 0 0.078125rem #ab0005; }
+.rule-light-1 .lights{ }
+.rule-light-1 .lights .light{ width: 0.171875rem; height: 0.15625rem; background: url(../images/icon_light_1.png) no-repeat left top; background-size: 100%; margin-left: -0.015625rem;}
 
 
 /*page1*/
@@ -124,8 +124,8 @@ transform: scaleX(1) skew(-15deg);}
 .page-list .row-level-6{ bottom: 0; left: 0;}
 .page4 .row-level-2,.page5 .row-level-2,.page6 .row-level-2,.page7 .row-level-2,.page8 .row-level-2{height: 100%; width: 100%; background: url(../images/view_item4_1.jpg) center center no-repeat; background-size: cover;}
 .page4 .row-level-7{ left: 1.15625rem; top: 4.171875rem; width: 7.375rem;}
-.page4 .row-level-7 .rule-light-1{ left: 5.25rem; top: 0.255rem;}
-.page4 .row-level-7 .rule-light-1 .lights .light{ width: 0.12rem; height: 0.12rem;}
+.page4 .row-level-7 .rule-light-1{ left: 5.25rem; top: 0.268rem;}
+.page4 .row-level-7 .rule-light-1 .lights .light{ width: 0.14rem; height: 0.14rem;}
 .page4 .row-level-7 .rule-light-2{ top: 7.140625rem; left: 1.5625rem; width: 1.52rem;}
 .tl-light{ position: absolute; left: 1.578125rem; top: 2rem;}
 .tl-light .light{ width: 0.5625rem; margin-right: 0;}
@@ -179,7 +179,7 @@ transform: scaleX(1) skew(-15deg);}
 /*page8*/
 .page8 .row-level-7{ left: 1.15625rem; top: 4.171875rem; width: 7.375rem; }
 .page8 .row-level-7 .inner{ height: 100%; width: 100%;}
-.page8 .row-level-7 .rule-light-1{ left: 5.25rem; top: 0.255rem;}
+.page8 .row-level-7 .rule-light-1{ left: 5.25rem; top: 0.256rem;}
 .page8 .row-level-7 .rule-light-1 .lights .light{ width: 0.12rem; height: 0.12rem;}
 .page8 .row-level-7 .rule-light-2{ top: 7.140625rem; left: 1.5625rem; width: 1.52rem;}
 .page8 .row-level-7 .status-1{ position: absolute; width: 3.203125rem; left: 2.328125rem; top: 1.71875rem; }
