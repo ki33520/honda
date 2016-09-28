@@ -125,7 +125,7 @@ transform: scaleX(1) skew(-15deg);}
 .page-list .row-level-4{ top: 0; left: 0; width: 3.890625rem;}
 .page-list .row-level-5{ top: 0; right: 0; width: 3.890625rem;}
 .page-list .row-level-6{ bottom: 0; left: 0;}
-.page3 .row-level-2,.page5 .row-level-2,.page5 .row-level-2,.page6 .row-level-2,.page7 .row-level-2{height: 100%; width: 100%; background: url(../images/view_item4_1.jpg) center center no-repeat; background-size: cover;}
+.page3 .row-level-2,.page4 .row-level-2,.page5 .row-level-2,.page6 .row-level-2,.page7 .row-level-2{height: 100%; width: 100%; background: url(../images/view_item4_1.jpg) center center no-repeat; background-size: cover;}
 .page3 .row-level-7{ left: 1.15625rem; top: 4.171875rem; width: 7.375rem;}
 .page3 .row-level-7 .rule-light-1{ left: 5.24rem; top: 0.268rem;}
 .page3 .row-level-7 .rule-light-1 .lights .light{ width: 0.140625rem; height: 0.125rem;}
