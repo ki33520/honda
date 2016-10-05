@@ -27,6 +27,16 @@ $.extend({
 		return sValue?sValue[1]:sValue;
 	}
 });
+var appId = "";
+$.ajax({
+    url:'http://sovita.dzhcn.cn/wechat_api/get_jssdk.php',
+    type:'get',
+    dataType:'jsonp',
+    data:{url:"http://hide.dzhcn.cn/honda/phase2/index.html"},
+    success:function(data){
+        appId = data.appId;
+    }
+});
 var manifest = ["images/logo.png"];
 $("img").each(function(){
 	manifest.push($(this).attr('src'));
@@ -75,13 +85,13 @@ var lightFlash = function(itm,ind){
 			setTimeout(function(){
 				$(itm).find('.light').fadeOut(100);
 				lightFlash(itm,ind)
-			},1000)
+			},600)
 		}else{
 			$(itm).find('.light').eq(ind).fadeIn(200);
 			ind++;
 			lightFlash(itm,ind)
 		}
-	},1000);
+	},600);
 }
 $('.lights').each(function(index,item){
 	lightFlash(item,0);
@@ -156,16 +166,34 @@ $(function(){
 				
 				startShake(e.activeIndex);
 				
-				$('.page').eq(curPage).find('.scroll-container').each(function(){
-					new Swiper(this,{
-						scrollbar: '.swiper-scrollbar',
-						scrollbarHide: false,
-						direction: 'vertical',
-						slidesPerView: 'auto',
-						mousewheelControl: true,
-						freeMode: true
+				if(e.activeIndex === 3){
+					works_vote.listAjax.complete(function(){
+						$('.works-wrap .scroll-container').each(function(){
+							new Swiper(this,{
+								scrollbar: $(this).find('.swiper-scrollbar'),
+								scrollbarHide: false,
+								direction: 'vertical',
+								slidesPerView: 'auto',
+								mousewheelControl: true,
+								freeMode: true
+							});
+						});
 					});
-				});
+				}
+				if(e.activeIndex === 4){
+					works_vote.boardAjax.complete(function(){
+						$('.leader-board-wrap .scroll-container').each(function(){
+							new Swiper(this,{
+								scrollbar: $(this).find('.swiper-scrollbar'),
+								scrollbarHide: false,
+								direction: 'vertical',
+								slidesPerView: 'auto',
+								mousewheelControl: true,
+								freeMode: true
+							});
+						});
+					});
+				}
 			},
 			onSlidePrevEnd: function(swiper, event) {
 				
@@ -328,7 +356,7 @@ $(function(){
 		$.ajax({
 			url: ajaxUrl,
 			type: "post",
-			data: {type: voteType,openid:'a',worksID:node.id,votes:vote_num,worksType:select_group.group},
+			data: {type: voteType,openid:appId,worksID:node.id,votes:vote_num,worksType:select_group.group},
 			dataType: "json",
 			error: function(request){
 				console.log(request);
@@ -376,7 +404,7 @@ $(function(){
 	worksVote.prototype = {
 		setLeaderBoard: function(){
 			var self = this;
-			$.ajax({
+			this.boardAjax = $.ajax({
 				url: ajaxUrl,
 				type: "post",
 				data: {type: boardType},
@@ -390,7 +418,7 @@ $(function(){
 						self.boardWrap.empty();
 						$(list_data).each(function(index,item){
 							var list_node = _.find(self.list, function(node){ return node.id == Number(item.id); });
-							var li = $('<li><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div class="img"><img src='+list_node.img+' /></div></div><div class="text"><div class="name">名称: '+item.Name+'</div><div class="dis">加油量: '+item.vote+'ml</div></div></div></li>');
+							var li = $('<li class="cf"><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div class="img"><img src='+list_node.img+' /></div></div><div class="text"><div class="name">名称: '+item.Name+'</div><div class="dis">加油量: '+item.vote+'ml</div></div></div></li>');
 							li.on('click',function(){
 								select_group.node = list_node;
 								myPageSwiper.unlockSwipeToNext();
@@ -407,7 +435,7 @@ $(function(){
 		setWorksList: function(){
 			var self = this;
 			self.listWraps.empty();
-			$.ajax({
+			this.listAjax = $.ajax({
 				url: ajaxUrl,
 				type: "post",
 				data: {type: oilType},
