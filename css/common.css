@@ -294,6 +294,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   animation: roll-animate3 3s 1s infinite;
   transform-origin: 10% 10%;
 }
+.roll-animate4{
+  animation: roll-animate3 2s 0s infinite;
+  transform-origin: 50% 50%;
+}
 @keyframes roll-animate {
   0%,10%,20%,30%,40%,100%{
     transform:rotate(0);
@@ -312,6 +316,12 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   5%,15%,25%,35%{
     transform:rotate(10deg);
   }
+}
+.swing2{
+  -webkit-transform-origin:center center;
+  transform-origin:center center;
+  -webkit-animation-name:swing;
+  animation-name:swing;
 }
 
 .delay0_25{

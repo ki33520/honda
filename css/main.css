@@ -64,6 +64,11 @@ transform: scaleX(1) skew(-15deg);}
 .row .row-level-3{}
 
 .logo{ position: absolute; left: 0; top: 0; width: 3.125rem; z-index: 95;}
+.logo-right{ position: absolute; right: 0; top: 0; width: 2.8125rem; z-index: 95;}
+.btn-voice{ position: absolute; left: 0.5rem; bottom: 1rem; width: 1rem; padding: .2rem 0; z-index: 95;}
+.btn-voice .img-wrap{ width: 0.484375rem; height: 0.4375rem; margin: 0 auto; overflow: hidden;}
+.btn-voice img{ margin-top: 0;}
+.btn-voice.off img{ margin-top: -0.4374rem;}
 .lights .light{ float: left; display: none;}
 .rule-light-1 .lights{ }
 .rule-light-1 .lights .light{ width: 0.171875rem; height: 0.15625rem; background: url(../images/icon_light_1.png) no-repeat left top; background-size: 100%; margin-left: -0.015625rem;}
@@ -74,13 +79,14 @@ transform: scaleX(1) skew(-15deg);}
 
 /*page1*/
 .page1{ background-color: #ac2831; }
-.page1 .row-level-1{ top: 0; left: 0;}
+.page1 .row-level-1{ bottom: 0; left: 0;}
+.page1 .row-level-1 img{ height: 100%;}
 .page1 .row-level-2{ bottom: 4rem; left: 0;}
 .page1 .row-level-3{ bottom: 0; left: 0;}
 .page1 .row-level-4-1{ bottom: 0rem; right: 0; width: 10rem; height: 5.03125rem; overflow: hidden;}
 .page1 .row-level-4{top: 0; right:0; width: 10rem; height: 5.03125rem; overflow: hidden;}
 .page1 .row-level-4 img{ position: absolute; right: 0; top: 0; width: 10rem;}
-.page1 .row-level-5{ bottom: 5rem; left: 0;}
+.page1 .row-level-5{ bottom: 4.078125rem; left: 0;}
 .page1 .row-level-6{ bottom: 4.8rem; left: 0;}
 .page1 .row-level-6 img{ width: 1.5625rem;}
 .page1 .row-level-7{ bottom: 4rem; left: 0.78125rem;}
@@ -89,7 +95,7 @@ transform: scaleX(1) skew(-15deg);}
 .page1 .row-level-9{ top: 1.875rem; left: 0;}
 .page1 .row-level-10{ top: 5.937rem; left: 0;}
 .page1 .row-level-11{ bottom: 0; left: 0;}
-.page1 .row-level-12{ width: 2.1875rem; bottom: 1.25rem; right: 0.78125rem;}
+.page1 .row-level-12{ width: 2.1875rem; padding: .2rem 0; bottom: 1rem; right: 0.78125rem;}
 .page1 .row-level-13{ display: none;}
 
 /*page2*/

@@ -27,7 +27,8 @@ $.extend({
 		return sValue?sValue[1]:sValue;
 	}
 });
-var appId = "";
+var appId = "",
+	voiceStatus = true;
 $.ajax({
     url:'http://sovita.dzhcn.cn/wechat_api/get_jssdk.php',
     type:'get',
@@ -161,7 +162,9 @@ $(function(){
 					e.lockSwipeToNext();
 				}
 				if(e.activeIndex === 2 || e.activeIndex === 3 || e.activeIndex === 4 || e.activeIndex === 5 || e.activeIndex === 6){
-					$("#musicBox")[0].play();
+					if(voiceStatus){
+						$("#musicBox")[0].play();
+					}
 				}
 				
 				startShake(e.activeIndex);
@@ -268,6 +271,17 @@ $(function(){
 
 	$('#return').on('click',function(){
 		myPageSwiper.swipeTo(0);
+	});
+
+	$('#btn-voice').on('click',function(){
+		var status = $(this).hasClass('off') ? false : true;
+		if(status){
+			$(this).addClass('off');
+			voiceStatus = false;
+		}else{
+			$(this).removeClass('off');
+			voiceStatus = true;
+		}
 	});
 
 	var SHAKE_THRESHOLD = 3000;
