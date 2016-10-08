@@ -71,7 +71,7 @@ transform: scaleX(1) skew(-15deg);}
 .btn-voice.off img{ margin-top: -0.4375rem;}
 .lights .light{ float: left; opacity: 0; -webkit-animation-duration: 0.2s; animation-duration: 0.2s;}
 .rule-light-1 .lights{ }
-.rule-light-1 .lights .light{ width: 0.171875rem; height: 0.15625rem; background: url(../images/icon_light_1.png) no-repeat left top; background-size: 100%; margin-left: -0.015625rem;}
+.rule-light-1 .lights .light{ width: 0.15625rem; height: 0.15625rem; background: url(../images/icon_light_1.png) no-repeat left top; background-size: cover;}
 
 .pop-alert{ position: absolute; width: 5rem; height: 1rem; left: 50%; top: 50%; margin-top: -0.6rem; margin-left: -2.7rem; font-size: 0.3rem; line-height: 150%; padding: .2rem; background: rgba(0,0,0,0.75); color: #fff; z-index: 999; border-radius: 0.1rem; display: none;}
 .pop-alert .text{ display: flex; justify-content: center; align-items:center; width: 100%; height: 100%;}
@@ -133,11 +133,11 @@ transform: scaleX(1) skew(-15deg);}
 .page3 .row-level-2,.page4 .row-level-2,.page5 .row-level-2,.page6 .row-level-2,.page7 .row-level-2{height: 100%; width: 100%; background: url(../images/view_item4_1.jpg) center center no-repeat; background-size: cover;}
 .page3 .row-level-7{ left: 1.15625rem; top: 4.171875rem; width: 7.375rem;}
 .page3 .row-level-7 .rule-light-1{ left: 5.24rem; top: 0.268rem;}
-.page3 .row-level-7 .rule-light-1 .lights .light{ width: 0.140625rem; height: 0.125rem;}
+.page3 .row-level-7 .rule-light-1 .lights .light{ width: 0.125rem; height: 0.125rem;}
 .page3 .row-level-7 .rule-light-2{ top: 7.140625rem; left: 1.5625rem; width: 1.52rem;}
 .tl-light{ position: absolute; left: 1.578125rem; top: 2rem;}
 .tl-light .light{ width: 0.5625rem; margin-right: 0;}
-.tr-light{ position: absolute; left: 0.625rem; top: 1.875rem;}
+.tr-light{ position: absolute; left: 0.625rem; top: 1.872rem;}
 .tr-light .light{ width: 0.28125rem; margin-right: 0;}
 .tr-light .light:first-child{ width: 0.3125rem;}
 .type-btn{ position: absolute; left: 1.625rem; top: 4rem; width: 2.03125rem; opacity: 0;}
