@@ -27,6 +27,99 @@ $.extend({
 		return sValue?sValue[1]:sValue;
 	}
 });
+var appId,timestamp,nonceStr,signature,
+	voiceStatus = true,
+	ajaxUrl = 'http://hide.dzhcn.cn/honda/callback.php',
+	shareImg = "http://hide.dzhcn.cn/honda/phase1/images/share_img.jpg",
+	boardType = 'Leaderboard1',
+	voteType = "Vote",
+	oilType = "Oil",
+	groupNames = ['personal','company'];
+var link = document.URL.split("#")[0];
+$.ajax({
+	url:'http://sovita.dzhcn.cn/wechat_api/get_jssdk.php',
+	type:'get',
+	dataType:'jsonp',
+	data:{url:link},
+	success:function(data){
+		console.log(data)
+		appId=data.appId;
+		timestamp=data.timestamp;
+		nonceStr=data.nonceStr;
+		signature=data.signature;
+		appId = data.appId;
+	}
+});
+function weixinShare(){
+	wx.config({
+		debug: true,
+		appId: appId,
+		timestamp: timestamp,
+		nonceStr: nonceStr,
+		signature: signature,
+		jsApiList: [
+			'onMenuShareTimeline',
+			'onMenuShareAppMessage',
+			'onMenuShareQQ'
+		]
+	});
+	wx.ready(function () {
+		wx.onMenuShareTimeline({
+			title: '你好你好',
+			desc: '测试测试',
+			link: link,
+			imgUrl: shareImg,
+			success: function () {
+				alert('分享成功');
+				wx.hideOptionMenu();
+			},
+			cancel: function () {
+				alert('取消分享');
+				wx.hideOptionMenu();
+			}
+		});
+		wx.onMenuShareAppMessage({
+			title: '你好你好',
+			desc: '测试测试',
+			link: link,
+			imgUrl: shareImg,
+			success: function () {
+				alert('分享成功');
+				wx.hideOptionMenu();
+			},
+			cancel: function () {
+				alert('取消分享');
+				wx.hideOptionMenu();
+			}
+		});
+		wx.onMenuShareQQ({
+			title: '你好你好',
+			desc: '测试测试',
+			link: link,
+			imgUrl: shareImg,
+			success: function () {
+				alert('分享成功');
+				wx.hideOptionMenu();
+			},
+			cancel: function () {
+				alert('取消分享');
+				wx.hideOptionMenu();
+			}
+		});
+	});
+}
+
+function loadAudio(){
+	$('.audio').each(function(){
+		$(this)[0].load();
+	})
+}
+function playAudio(string){
+	$(string)[0].play();
+}
+function audioOff(string){
+	$(string)[0].pause();
+}
 var manifest = ["images/logo.png"];
 $("img").each(function(){
 	manifest.push($(this).attr('src'));
@@ -75,13 +168,13 @@ var lightFlash = function(itm,ind){
 			setTimeout(function(){
 				$(itm).find('.light').fadeOut(100);
 				lightFlash(itm,ind)
-			},1000)
+			},100)
 		}else{
 			$(itm).find('.light').eq(ind).fadeIn(200);
 			ind++;
 			lightFlash(itm,ind)
 		}
-	},1000);
+	},500);
 }
 $('.lights').each(function(index,item){
 	lightFlash(item,0);
@@ -137,7 +230,7 @@ $(function(){
 				}
 			},
 			onSlideChangeEnd: function(e) {
-				$('.row-rule').hide();
+				$('.row-rule').hide().prev('.row').find('.slide_btn').show();
 				if(e.activeIndex == (e.slides.length-1)){
 					$('.slide_btn').hide();
 				}else{
@@ -151,21 +244,39 @@ $(function(){
 					e.lockSwipeToNext();
 				}
 				if(e.activeIndex === 2 || e.activeIndex === 3 || e.activeIndex === 4 || e.activeIndex === 5 || e.activeIndex === 6){
-					$("#musicBox")[0].play();
+					playAudio('#armor');
 				}
 				
 				startShake(e.activeIndex);
 				
-				$('.page').eq(curPage).find('.scroll-container').each(function(){
-					new Swiper(this,{
-						scrollbar: '.swiper-scrollbar',
-						scrollbarHide: false,
-						direction: 'vertical',
-						slidesPerView: 'auto',
-						mousewheelControl: true,
-						freeMode: true
+				if(e.activeIndex === 3){
+					works_vote.listAjax.complete(function(){
+						$('.works-wrap .scroll-container').each(function(){
+							new Swiper(this,{
+								scrollbar: $(this).find('.swiper-scrollbar'),
+								scrollbarHide: false,
+								direction: 'vertical',
+								slidesPerView: 'auto',
+								mousewheelControl: true,
+								freeMode: true
+							});
+						});
 					});
-				});
+				}
+				if(e.activeIndex === 4){
+					works_vote.boardAjax.complete(function(){
+						$('.leader-board-wrap .scroll-container').each(function(){
+							new Swiper(this,{
+								scrollbar: $(this).find('.swiper-scrollbar'),
+								scrollbarHide: false,
+								direction: 'vertical',
+								slidesPerView: 'auto',
+								mousewheelControl: true,
+								freeMode: true
+							});
+						});
+					});
+				}
 			},
 			onSlidePrevEnd: function(swiper, event) {
 				
@@ -174,18 +285,20 @@ $(function(){
 			},
 			onTouchEnd: function(swiper, event) {
 				if(swiper.touches.diff<0 && swiper.activeIndex == 1){
-					$('.row-rule').show();
+					$('.row-rule').show().prev('.row').find('.slide_btn').hide();
 				}
 			}
 		});
 		
 	};
-
 	window.addEventListener('touchstart', touchstartHandler);
 	function touchstartHandler(){
-		if(!($("#musicBox").hasClass('loaded'))){
-			$("#musicBox").addClass('loaded');
-			$("#musicBox")[0].load();
+		if(!($('.audio').hasClass('loaded'))){
+			$('.audio').addClass('loaded');
+			loadAudio();
+			if(voiceStatus){
+				playAudio('#bgm');
+			}
 		}
 	}
 	$('.rule-btn').on('click',function(){
@@ -197,7 +310,7 @@ $(function(){
 		$('.rules').fadeOut();
 	});
 	$('.btn-back').on('click',function(){
-		$('.row-rule').hide();
+		$('.row-rule').hide().prev('.row').find('.slide_btn').show();
 	});
 	$('.btn-confirm').on('click',function(){
 		myPageSwiper.unlockSwipeToNext();
@@ -206,6 +319,9 @@ $(function(){
 	$('.type-btn').on('click',function(){
 		myPageSwiper.unlockSwipeToNext();
 		myPageSwiper.slideNext();
+	});
+	$('.sound-btn').on('click',function(){
+		playAudio('#button');
 	});
 	$('.rank-btn').on('click',function(){
 		myPageSwiper.unlockSwipeToNext();
@@ -240,6 +356,19 @@ $(function(){
 
 	$('#return').on('click',function(){
 		myPageSwiper.swipeTo(0);
+	});
+
+	$('#btn-voice').on('touchstart',function(){
+		var status = $(this).hasClass('off') ? false : true;
+		if(status){
+			$(this).addClass('off');
+			voiceStatus = false;
+			audioOff('#bgm');
+		}else{
+			$(this).removeClass('off');
+			voiceStatus = true;
+			playAudio('#bgm');
+		}
 	});
 
 	var SHAKE_THRESHOLD = 3000;
@@ -291,6 +420,9 @@ $(function(){
 	});
 
 	function countNumber(num){
+		if(num%2 === 0){
+			playAudio('#shake');
+		};
 		$('.status-2 .number').text(num);
 		setTimeout(function(){
 			$('.status-2 .number').text(--num);
@@ -315,11 +447,6 @@ $(function(){
 	}
 	pop.wrap.appendTo('body');
 	/* data */
-	var ajaxUrl = 'http://hide.dzhcn.cn/honda/callback.php',
-		boardType = 'Leaderboard1',
-		voteType = "Vote",
-		oilType = "Oil",
-		groupNames = ['personal','company'];
 
 	function voteFn(shake_num){
 		var shake_num = shake_num ? shake_num : 1;
@@ -328,7 +455,7 @@ $(function(){
 		$.ajax({
 			url: ajaxUrl,
 			type: "post",
-			data: {type: voteType,openid:'a',worksID:node.id,votes:vote_num,worksType:select_group.group},
+			data: {type: voteType,openid:appId,worksID:node.id,votes:vote_num,worksType:select_group.group},
 			dataType: "json",
 			error: function(request){
 				console.log(request);
@@ -376,7 +503,7 @@ $(function(){
 	worksVote.prototype = {
 		setLeaderBoard: function(){
 			var self = this;
-			$.ajax({
+			this.boardAjax = $.ajax({
 				url: ajaxUrl,
 				type: "post",
 				data: {type: boardType},
@@ -390,7 +517,7 @@ $(function(){
 						self.boardWrap.empty();
 						$(list_data).each(function(index,item){
 							var list_node = _.find(self.list, function(node){ return node.id == Number(item.id); });
-							var li = $('<li><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div class="img"><img src='+list_node.img+' /></div></div><div class="text"><div class="name">名称: '+item.Name+'</div><div class="dis">加油量: '+item.vote+'ml</div></div></div></li>');
+							var li = $('<li class="cf"><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div class="img"><img src='+list_node.img+' /></div></div><div class="text"><div class="name">名称: '+item.Name+'</div><div class="dis">加油量: '+item.vote+'ml</div></div></div></li>');
 							li.on('click',function(){
 								select_group.node = list_node;
 								myPageSwiper.unlockSwipeToNext();
@@ -407,7 +534,7 @@ $(function(){
 		setWorksList: function(){
 			var self = this;
 			self.listWraps.empty();
-			$.ajax({
+			this.listAjax = $.ajax({
 				url: ajaxUrl,
 				type: "post",
 				data: {type: oilType},
