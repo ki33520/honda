@@ -27,35 +27,84 @@ $.extend({
 		return sValue?sValue[1]:sValue;
 	}
 });
-var appId,timestamp,nonceStr,signature,
-	voiceStatus = true,
+var voiceStatus = true,
+	jssdkUrl = 'http://sovita.dzhcn.cn/wechat_api/get_jssdk.php',
 	ajaxUrl = 'http://hide.dzhcn.cn/honda/callback.php',
 	shareImg = "http://hide.dzhcn.cn/honda/phase1/images/share_img.jpg",
 	boardType = 'Leaderboard1',
 	voteType = "Vote",
 	oilType = "Oil",
-	groupNames = ['personal','company'];
-var link = document.URL.split("#")[0];
-$.ajax({
-	url:'http://sovita.dzhcn.cn/wechat_api/get_jssdk.php',
-	type:'get',
-	dataType:'jsonp',
-	data:{url:link},
-	success:function(data){
-		console.log(data)
-		timestamp=data.timestamp;
-		nonceStr=data.nonceStr;
-		signature=data.signature;
-		appId = data.appId;
+	groupNames = ['personal','company'],
+	pageHref = window.location.origin+window.location.pathname;
+
+function dataPorts(){
+	this.getJssdk();
+}
+dataPorts.prototype = {
+	getJssdk: function(){
+		var self = this;
+		this.jssdkAjax = $.ajax({
+			url: jssdkUrl,
+			type:'get',
+			dataType:'jsonp',
+			data:{url:pageHref},
+			success:function(data){
+				console.log(data)
+				this.appId = data.appId;
+				this.timestamp = data.timestamp;
+				this.nonceStr = data.nonceStr;
+				this.signature = data.signature;
+				weixinShare();
+			}
+		});
+	},
+	postVote: function(){
+		$.ajax({
+			url: ajaxUrl,
+			type: "post",
+			data: {type: voteType,openid:$.QueryString('openid'),worksID:node.id,votes:vote_num,worksType:select_group.group},
+			dataType: "json",
+			error: function(request){
+				console.log(request);
+			},
+			success: function(data){
+				view_model.vote(data);
+			}
+		});
 	}
-});
+}
+var data_ports = new dataPorts();
+function viewModel(){
+
+}
+viewModel.prototype = {
+	vote: function(data){
+		if(data.status === 1){
+			$('.status-3 .number').text(vote_num);
+		}else if(data.status === 2){
+			$('.status-3 .number').text(0);
+			pop.alert('当天已对投过作品');
+		}else if(data.status === 3){
+			$('.status-3 .number').text(0);
+			pop.alert('所投作品id与作品所属类');
+		}else if(data.status === 0){
+			$('.status-3 .number').text(0);
+			pop.alert('投票失败');
+		}
+		$('.shake-vote').removeClass('roll-animate');
+		$('.status').hide();
+		$('.status-3').show();
+	}
+}
+var view_model = new viewModel();
+
 function weixinShare(){
 	wx.config({
 		debug: true,
-		appId: appId,
-		timestamp: timestamp,
-		nonceStr: nonceStr,
-		signature: signature,
+		appId: data_ports.appId,
+		timestamp: data_ports.timestamp,
+		nonceStr: data_ports.nonceStr,
+		signature: data_ports.signature,
 		jsApiList: [
 			'onMenuShareTimeline',
 			'onMenuShareAppMessage',
@@ -66,7 +115,7 @@ function weixinShare(){
 		wx.onMenuShareTimeline({
 			title: '你好你好',
 			desc: '测试测试',
-			link: link,
+			link: pageHref,
 			imgUrl: shareImg,
 			success: function () {
 				alert('分享成功');
@@ -80,7 +129,7 @@ function weixinShare(){
 		wx.onMenuShareAppMessage({
 			title: '你好你好',
 			desc: '测试测试',
-			link: link,
+			link: pageHref,
 			imgUrl: shareImg,
 			success: function () {
 				alert('分享成功');
@@ -94,7 +143,7 @@ function weixinShare(){
 		wx.onMenuShareQQ({
 			title: '你好你好',
 			desc: '测试测试',
-			link: link,
+			link: pageHref,
 			imgUrl: shareImg,
 			success: function () {
 				alert('分享成功');
@@ -165,11 +214,11 @@ var lightFlash = function(itm,ind){
 		if(ind>=$(itm).find('.light').length){
 			ind=0;
 			setTimeout(function(){
-				$(itm).find('.light').fadeOut(100);
+				$(itm).find('.light').removeClass("fadeIn animated");
 				lightFlash(itm,ind)
 			},100)
 		}else{
-			$(itm).find('.light').eq(ind).fadeIn(200);
+			$(itm).find('.light').eq(ind).addClass("fadeIn animated");
 			ind++;
 			lightFlash(itm,ind)
 		}
@@ -454,7 +503,7 @@ $(function(){
 		$.ajax({
 			url: ajaxUrl,
 			type: "post",
-			data: {type: voteType,openid:appId,worksID:node.id,votes:vote_num,worksType:select_group.group},
+			data: {type: voteType,openid:$.QueryString('openid'),worksID:node.id,votes:vote_num,worksType:select_group.group},
 			dataType: "json",
 			error: function(request){
 				console.log(request);
