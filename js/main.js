@@ -214,11 +214,11 @@ var lightFlash = function(itm,ind){
 		if(ind>=$(itm).find('.light').length){
 			ind=0;
 			setTimeout(function(){
-				$(itm).find('.light').fadeOut(100);
+				$(itm).find('.light').removeClass("fadeIn animated");
 				lightFlash(itm,ind)
 			},100)
 		}else{
-			$(itm).find('.light').eq(ind).fadeIn(200);
+			$(itm).find('.light').eq(ind).addClass("fadeIn animated");
 			ind++;
 			lightFlash(itm,ind)
 		}

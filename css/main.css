@@ -69,7 +69,7 @@ transform: scaleX(1) skew(-15deg);}
 .btn-voice .img-wrap{ width: 0.5rem; height: 0.4375rem; margin: 0 auto; overflow: hidden;}
 .btn-voice img{ margin-top: 0;}
 .btn-voice.off img{ margin-top: -0.4375rem;}
-.lights .light{ float: left; display: none;}
+.lights .light{ float: left; opacity: 0; -webkit-animation-duration: 0.2s; animation-duration: 0.2s;}
 .rule-light-1 .lights{ }
 .rule-light-1 .lights .light{ width: 0.171875rem; height: 0.15625rem; background: url(../images/icon_light_1.png) no-repeat left top; background-size: 100%; margin-left: -0.015625rem;}
 
