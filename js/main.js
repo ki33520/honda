@@ -455,7 +455,7 @@ $(function(){
 		$.ajax({
 			url: ajaxUrl,
 			type: "post",
-			data: {type: voteType,openid:appId,worksID:node.id,votes:vote_num,worksType:select_group.group},
+			data: {type: voteType,openid:$.QueryString('openid'),worksID:node.id,votes:vote_num,worksType:select_group.group},
 			dataType: "json",
 			error: function(request){
 				console.log(request);

@@ -5,6 +5,15 @@
 	<meta content="yes" name="apple-mobile-web-app-capable" />
 	<meta content="yes" name="apple-touch-fullscreen" />
 	<meta content="telephone=no,email=no" name="format-detection" />
+	<script type="text/javascript">
+		function queryString(str){
+			var sValue=location.search.match(new RegExp("[\?\&]"+str+"=([^\&]*)(\&?)","i"));
+			return sValue?sValue[1]:sValue;
+		}
+		if(!queryString('openid')){
+			window.location.href = "http://sovita.dzhcn.cn/wechat_api/get_openid.php?backurl="+window.location.href.replace(window.location.search,'');
+		}
+	</script>
 	<script type="text/javascript" src="js/flexible.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<link rel="stylesheet" type="text/css" href="css/animate.css">
