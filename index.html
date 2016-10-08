@@ -11,7 +11,7 @@
 			return sValue?sValue[1]:sValue;
 		}
 		if(!queryString('openid')){
-			window.location.href = "http://sovita.dzhcn.cn/wechat_api/get_openid.php?backurl="+window.location.href.replace(window.location.search,'');
+			window.location.href = "http://sovita.dzhcn.cn/wechat_api/get_openid.php?backurl="+window.location.origin+window.location.pathname;
 		}
 	</script>
 	<script type="text/javascript" src="js/flexible.min.js"></script>
