@@ -196,7 +196,7 @@ transform: scaleX(1) skew(-15deg);}
 .page7 .row-level-7{ left: 1.15625rem; top: 4.171875rem; width: 7.375rem; }
 .page7 .row-level-7 .inner{ height: 100%; width: 100%;}
 .page7 .row-level-7 .rule-light-1{ left: 5.24rem; top: 0.268rem;}
-.page7 .row-level-7 .rule-light-1 .lights .light{ width: 0.140625rem; height: 0.125rem;}
+.page7 .row-level-7 .rule-light-1 .lights .light{ width: 0.125rem; height: 0.125rem;}
 .page7 .row-level-7 .rule-light-2{ top: 7.140625rem; left: 1.5625rem; width: 1.52rem;}
 .page7 .row-level-7 .status-1{ position: absolute; width: 3.203125rem; left: 2.328125rem; top: 1.71875rem; }
 .page7 .row-level-7 .status-2{ position: absolute; width: 4.046875rem; left: 1.890625rem; top: 1.590625rem; display: none;}
