@@ -332,8 +332,9 @@ $(function(){
 	};
 	window.addEventListener('touchstart', touchstartHandler);
 	function touchstartHandler(){
-		if(!($('.audio').hasClass('loaded'))){
-			$('.audio').addClass('loaded');
+		if(!($('#bgm').hasClass('loaded'))){
+			$('#bgm').addClass('loaded');
+			loadAudio();
 			if(voiceStatus){
 				playAudio('#bgm');
 			}

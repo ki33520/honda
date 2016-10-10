@@ -78,7 +78,7 @@ transform: scaleX(1) skew(-15deg);}
 
 
 /*page1*/
-.page1{ background: #ac2831 url(../images/page1_bg.jpg) no-repeat left top; }
+.page1{ background-color: #ac2831; background-image:  url(../images/page1_bg.jpg); background-repeat: no-repeat; background-position: left top; background-size: 100%; }
 .page1 .row-level-1{ bottom: 0; left: 0;}
 .page1 .row-level-2{ bottom: 4rem; left: 0;}
 .page1 .row-level-3{ bottom: 0; left: 0;}
