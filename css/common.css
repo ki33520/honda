@@ -284,7 +284,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 .roll-animate{
   animation: roll-animate 2s 1s infinite;
-  transform-origin: 10% 10%;
+  transform-origin: 50% 50%;
 }
 .roll-animate2{
   animation: roll-animate 3s 1s infinite;

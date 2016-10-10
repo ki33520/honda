@@ -343,7 +343,6 @@ $(function(){
 	function touchstartHandler(){
 		if(!($('.audio').hasClass('loaded'))){
 			$('.audio').addClass('loaded');
-			loadAudio();
 			if(voiceStatus){
 				playAudio('#bgm');
 			}
@@ -565,7 +564,7 @@ $(function(){
 						self.boardWrap.empty();
 						$(list_data).each(function(index,item){
 							var list_node = _.find(self.list, function(node){ return node.id == Number(item.id); });
-							var li = $('<li class="cf"><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div class="img"><img src='+list_node.img+' /></div></div><div class="text"><div class="name">名称: '+item.Name+'</div><div class="dis">加油量: '+item.vote+'ml</div></div></div></li>');
+							var li = $('<li class="cf"><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div class="img"><img src='+list_node.img+' /></div></div><div class="text"><div class="name">'+item.Name+'</div><div class="dis">得票数: '+item.vote+'ml</div></div></div></li>');
 							li.on('click',function(){
 								select_group.node = list_node;
 								myPageSwiper.unlockSwipeToNext();

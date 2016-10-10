@@ -55,8 +55,8 @@ transform: scaleX(1) skew(-15deg);}
 .rule-content h2 img{ width: 2.390625rem; margin: 0 auto;}
 .rule-content .text{ font-size: .28rem; color: #fff;}
 .rule-content .text p{ margin-bottom: .15rem; padding-left: 1em; line-height: 130%; text-indent: -1em;}
-.btn-close{ position: absolute; bottom: 0rem; left: 2.92rem;}
-.btn-close img{ width: 1.796875rem;}
+.btn-close{ position: absolute; bottom: 0rem; left: 2.7rem;}
+.btn-close img{ width: 2rem;}
 
 .page .content{ width: 100%; height: 100%; position: relative;}
 .row{ position: absolute; width: 10rem;}
@@ -78,7 +78,7 @@ transform: scaleX(1) skew(-15deg);}
 
 
 /*page1*/
-.page1{ background-color: #ac2831; }
+.page1{ background: #ac2831 url(../images/page1_bg.jpg) no-repeat left top; }
 .page1 .row-level-1{ bottom: 0; left: 0;}
 .page1 .row-level-2{ bottom: 4rem; left: 0;}
 .page1 .row-level-3{ bottom: 0; left: 0;}
@@ -110,9 +110,9 @@ transform: scaleX(1) skew(-15deg);}
 .page .rule-content .text{ padding-top: .6rem;}
 .page .rule-content .text p{ line-height: 150%; margin-bottom: .3rem;}
 .page .rule-content .btn-confirm{ position: absolute; bottom: 0rem; left: 1rem;}
-.page .rule-content .btn-back{ position: absolute; bottom: 0rem; left: 3.2rem;}
+.page .rule-content .btn-back{ position: absolute; bottom: 0rem; left: 3.5rem;}
 .page .rule-content .btn-confirm img,
-.page .rule-content .btn-back img{ width: 1.796875rem;}
+.page .rule-content .btn-back img{ width: 2rem;}
 .page .row-masker{ position: absolute; width: 100%; height: 100%; left: 0; top: 0; opacity: 0.7; background-color: #000;}
 
 
@@ -176,8 +176,8 @@ transform: scaleX(1) skew(-15deg);}
 .page5 .pd-list li:last-child .item-right{ border-bottom: 0;}
 .page5 .item-right .text .name,
 .page5 .item-right .text .dis{ line-height: 150%;}
-.page5 .btn-back-list{ position: absolute; z-index: 9; bottom: 1.4rem; left: 2.92rem;}
-.page5 .btn-back-list img{ width: 1.625rem;}
+.page5 .btn-back-list{ position: absolute; z-index: 9; bottom: 1.3rem; left: 2.92rem;}
+.page5 .btn-back-list img{ width: 2rem;}
 
 /*page6*/
 .page6 .row-level-7{ left: 1.109375rem; top: 3.34375rem; width: 7.78125rem;}
@@ -187,8 +187,8 @@ transform: scaleX(1) skew(-15deg);}
 .page6 .number{ position: absolute; left: 5.15625rem; top: 4.78125rem; color: #fff; font-size: 0.4rem; line-height: 140%;}
 .page6 .vote{ position: absolute; left: 5.15625rem; top: 5.3125rem; color: #fff; font-size: 0.3rem; line-height: 140%;}
 .icon-shake{ position: absolute; left: 1.546875rem; top: 6.25rem; width: 1.546875rem; height: 2.125rem;}
-.btn-back-choose{ position: absolute; bottom: -0.8125rem; left: 1.78125rem; width: 1.796875rem;}
-.btn-start-shake{ position: absolute; bottom: -0.8125rem; left: 4.078125rem; width: 1.796875rem;}
+.btn-back-choose{ position: absolute; bottom: -0.8125rem; left: 1.78125rem; width: 2rem;}
+.btn-start-shake{ position: absolute; bottom: -0.8125rem; left: 4.078125rem; width: 2rem;}
 .img2-cover{ background: none; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background-position: left top;}
 .page6 .pd-img .img{ width: 6.8125rem; padding-top: 0.640625rem; padding-left: 0.546875rem;}
 
@@ -199,11 +199,11 @@ transform: scaleX(1) skew(-15deg);}
 .page7 .row-level-7 .rule-light-1 .lights .light{ width: 0.140625rem; height: 0.125rem;}
 .page7 .row-level-7 .rule-light-2{ top: 7.140625rem; left: 1.5625rem; width: 1.52rem;}
 .page7 .row-level-7 .status-1{ position: absolute; width: 3.203125rem; left: 2.328125rem; top: 1.71875rem; }
-.page7 .row-level-7 .status-2{ position: absolute; width: 4.046875rem; left: 1.890625rem; top: 1.890625rem; display: none;}
+.page7 .row-level-7 .status-2{ position: absolute; width: 4.046875rem; left: 1.890625rem; top: 1.590625rem; display: none;}
 .page7 .row-level-7 .status-2 .number{ position: absolute; left: -1rem; top: 0; color: #fff; width: 3.5rem; font-size: 3rem; font-weight: bold; line-height: 140%; font-family: sans-serif; text-align: right;}
 .page7 .row-level-7 .status-3{ position: absolute; width: 4.359375rem; height: 4.71875rem; left: 1.671875rem; top: 1.78125rem; display: none;}
 .page7 .row-level-7 .status-3 .number{ position: absolute; left: 2.5rem; top: 4.035rem; font-size: .33rem; width: 0.66rem; text-align: center; color: #fff; line-height: 120%;}
-.share-btn{ position: absolute; left: 1.3rem; top: 6.28125rem; width: 1.796875rem; }
+.share-btn{ position: absolute; left: 1.3rem; top: 6.28125rem; width: 2rem; }
 .share-cover{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-image: url(../images/share_cover.png); background-position: center -1rem; background-repeat: no-repeat; background-size: 100% auto; background-color: rgba(0,0,0,0.75); display: none;}
 .share-cover .inner{ position: absolute; width: 6.078125rem; height: 5.15625rem; left: 50%; top: 0; margin-left: -3.0390625rem; margin-top: 4.3rem;}
 .share-cover .tl-light{ left: 0.64rem; top: 0.595rem;}
