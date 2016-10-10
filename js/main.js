@@ -28,9 +28,9 @@ $.extend({
 	}
 });
 var voiceStatus = true,
+	indexUrl = 'http://hide.dzhcn.cn/honda/',
 	jssdkUrl = 'http://sovita.dzhcn.cn/wechat_api/get_jssdk.php',
-	ajaxUrl = 'http://hide.dzhcn.cn/honda/callback.php',
-	shareImg = "http://hide.dzhcn.cn/honda/phase1/images/share_img.jpg",
+	ajaxUrl = indexUrl+'callback.php',
 	boardType = 'Leaderboard1',
 	voteType = "Vote",
 	oilType = "Oil",
@@ -111,47 +111,38 @@ function weixinShare(){
 			'onMenuShareQQ'
 		]
 	});
+	var shareTitle = '大赛在即先夺人气',
+		shareDesc = '2016第十届Honda中国节能竞技大赛最佳人气奖评选',
+		shareImg = indexUrl+"phase1/images/share_img.jpg";
 	wx.ready(function () {
 		wx.onMenuShareTimeline({
-			title: '你好你好',
-			desc: '测试测试',
+			title: shareTitle,
+			desc: shareDesc,
 			link: pageHref,
 			imgUrl: shareImg,
 			success: function () {
-				alert('分享成功');
-				wx.hideOptionMenu();
 			},
 			cancel: function () {
-				alert('取消分享');
-				wx.hideOptionMenu();
 			}
 		});
 		wx.onMenuShareAppMessage({
-			title: '你好你好',
-			desc: '测试测试',
+			title: shareTitle,
+			desc: shareDesc,
 			link: pageHref,
 			imgUrl: shareImg,
 			success: function () {
-				alert('分享成功');
-				wx.hideOptionMenu();
 			},
 			cancel: function () {
-				alert('取消分享');
-				wx.hideOptionMenu();
 			}
 		});
 		wx.onMenuShareQQ({
-			title: '你好你好',
-			desc: '测试测试',
+			title: shareTitle,
+			desc: shareDesc,
 			link: pageHref,
 			imgUrl: shareImg,
 			success: function () {
-				alert('分享成功');
-				wx.hideOptionMenu();
 			},
 			cancel: function () {
-				alert('取消分享');
-				wx.hideOptionMenu();
 			}
 		});
 	});
