@@ -227,13 +227,13 @@ function aniFunc(page) {
 }
 $(function(){
 	var pi = 0,
-		myPageSwiper;
+		myPageSwiper,
+		listSwipers = [];
 
 	if($.QueryString('page')){
 		pi = Number($.QueryString('page'));
 		pi = pi > $('.page-container .swiper-slide').length ? $('.page-container .swiper-slide').length-1 : pi -1;
 	};
-
 	window.pageInit = function(){
 		aniFunc($('.page').eq(pi));
 		$('.page-container').show();
@@ -290,9 +290,10 @@ $(function(){
 				
 				if(e.activeIndex === 3){
 					works_vote.listAjax.complete(function(){
-						$('.works-wrap .scroll-container').each(function(){
-							new Swiper(this,{
-								scrollbar: $(this).find('.swiper-scrollbar'),
+						$('.works-wrap .scroll-container').each(function(index,item){
+							var self = this;
+							listSwipers[index] = new Swiper($(self),{
+								scrollbar: $(self).find('.swiper-scrollbar'),
 								scrollbarHide: false,
 								direction: 'vertical',
 								slidesPerView: 'auto',
@@ -535,6 +536,7 @@ $(function(){
 
 	function worksVote(list){
 		this.list = list ? list : window.worksList;
+		this.workWrap = $('.works-wrap');
 		this.listWraps = $('.works-wrap .works-list');
 		this.boardWrap = $('.leader-board');
 		this.setWorksList();
@@ -572,7 +574,7 @@ $(function(){
 		},
 		setWorksList: function(){
 			var self = this;
-			self.listWraps.empty();
+			self.workWrap.empty();
 			this.listAjax = $.ajax({
 				url: ajaxUrl,
 				type: "post",
@@ -585,6 +587,7 @@ $(function(){
 					if(data.status === 1){
 						var oilArr = _.union(data.company,data.personal);
 						var ind = 0;
+						var wraps = [$('<div class="scroll-container scroll-container-1"><div class="swiper-wrapper"><div class="swiper-slide"><ul class="pd-list works-list pd-list-1"></ul></div></div><div class="swiper-scrollbar"></div></div>'),$('<div class="scroll-container scroll-container-2"><div class="swiper-wrapper"><div class="swiper-slide"><ul class="pd-list works-list pd-list-2"></ul></div></div><div class="swiper-scrollbar"></div></div>')];
 						$(self.list).each(function(index,item){
 							item.vote = _.find(oilArr, function(node){ return Number(node.id) == item.id; }).vote;
 							if(item.group === select_group.group){
@@ -594,9 +597,11 @@ $(function(){
 									myPageSwiper.unlockSwipeToNext();
 									myPageSwiper.slideTo(5);
 								});
-								li.appendTo(self.listWraps.eq(ind++%2));
+								wraps[ind++%2].find('.works-list').append(li);
 							}
 						});
+						self.workWrap.append(wraps[0]);
+						self.workWrap.append(wraps[1]);
 						self.setWorksNode();
 					}
 				}
