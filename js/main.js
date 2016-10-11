@@ -35,7 +35,8 @@ var voiceStatus = true,
 	voteType = "Vote",
 	oilType = "Oil",
 	groupNames = ['personal','company'],
-	pageHref = window.location.origin+window.location.pathname;
+//	pageHref = window.location.origin+window.location.pathname;
+	pageHref = document.URL.split("#")[0];
 
 function dataPorts(){
 	this.getJssdk();
@@ -50,10 +51,10 @@ dataPorts.prototype = {
 			data:{url:pageHref},
 			success:function(data){
 				console.log(data)
-				this.appId = data.appId;
-				this.timestamp = data.timestamp;
-				this.nonceStr = data.nonceStr;
-				this.signature = data.signature;
+				self.appId = data.appId;
+				self.timestamp = data.timestamp;
+				self.nonceStr = data.nonceStr;
+				self.signature = data.signature;
 				weixinShare();
 			}
 		});
@@ -100,7 +101,7 @@ var view_model = new viewModel();
 
 function weixinShare(){
 	wx.config({
-		debug: true,
+		debug: false,
 		appId: data_ports.appId,
 		timestamp: data_ports.timestamp,
 		nonceStr: data_ports.nonceStr,
@@ -113,12 +114,13 @@ function weixinShare(){
 	});
 	var shareTitle = '大赛在即先夺人气',
 		shareDesc = '2016第十届Honda中国节能竞技大赛最佳人气奖评选',
+		shareLink = window.location.origin+window.location.pathname,
 		shareImg = indexUrl+"phase1/images/share_img.jpg";
 	wx.ready(function () {
 		wx.onMenuShareTimeline({
 			title: shareTitle,
 			desc: shareDesc,
-			link: pageHref,
+			link: shareLink,
 			imgUrl: shareImg,
 			success: function () {
 			},
@@ -128,7 +130,7 @@ function weixinShare(){
 		wx.onMenuShareAppMessage({
 			title: shareTitle,
 			desc: shareDesc,
-			link: pageHref,
+			link: shareLink,
 			imgUrl: shareImg,
 			success: function () {
 			},
@@ -138,7 +140,7 @@ function weixinShare(){
 		wx.onMenuShareQQ({
 			title: shareTitle,
 			desc: shareDesc,
-			link: pageHref,
+			link: shareLink,
 			imgUrl: shareImg,
 			success: function () {
 			},

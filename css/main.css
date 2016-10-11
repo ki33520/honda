@@ -33,7 +33,7 @@ body{ position: relative; text-align: left; background-color: #780c17; font-fami
 .scroll-container{ width: 100%; height: 100%; margin: 0 auto; position: relative; overflow: hidden; z-index: 1;}
 .swiper-slide {}
 .scroll-container .swiper-slide { height: auto; -webkit-box-sizing: border-box; box-sizing: border-box;}
-.scroll-wrap{ height: 8.99rem; width: 6.53125rem; position: absolute; left: 0.546875rem; top: 2.890625rem;}
+.scroll-wrap{ height: 8.99rem; width: 6.53125rem; position: absolute; left: 0.546875rem; top: 2.890625rem; overflow: hidden;}
 .works-wrap .scroll-container{ width: 50%; float: left;}
 .scroll-wrap .scroll-container .swiper-slide{ background-color: transparent;}
 .scroll-container.swiper-container-vertical>.swiper-scrollbar{ width: 0.28125rem; right: 0; height: 100%; top: 0;}
@@ -209,7 +209,7 @@ transform: scaleX(1) skew(-15deg);}
 .share-cover .tl-light{ left: 0.64rem; top: 0.595rem;}
 .share-cover .tl-light .light{ width: 0.495rem;}
 .share-cover .rule-light-1{ left: 4.23rem; top: 0.02rem; position: absolute;}
-.share-cover .rule-light-1 .light{ width: 0.12rem; height: 0.11rem; margin-left: -0.015625rem;}
+.share-cover .rule-light-1 .light{ width: 0.11rem; height: 0.11rem;}
 .share-cover .rule-light-2{ position: absolute; bottom: auto; top: 4.309375rem; left: 1.06rem; width: 1.34375rem; height: 0.078125rem;}
 
 
