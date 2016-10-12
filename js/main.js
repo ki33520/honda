@@ -28,9 +28,9 @@ $.extend({
 	}
 });
 var voiceStatus = true,
-	indexUrl = 'http://hide.dzhcn.cn/honda/',
+	indexUrl = 'http://honda10emc.dzhcn.cn/popularity/',
 	jssdkUrl = 'http://sovita.dzhcn.cn/wechat_api/get_jssdk.php',
-	ajaxUrl = indexUrl+'callback.php',
+	ajaxUrl = 'http://honda10emc.dzhcn.cn/callback.php',
 	boardType = 'Leaderboard1',
 	voteType = "Vote",
 	oilType = "Oil",
@@ -115,7 +115,7 @@ function weixinShare(){
 	var shareTitle = '大赛在即先夺人气',
 		shareDesc = '2016第十届Honda中国节能竞技大赛最佳人气奖评选',
 		shareLink = window.location.origin+window.location.pathname,
-		shareImg = indexUrl+"phase1/images/share_img.jpg";
+		shareImg = indexUrl+"images/share_img.jpg";
 	wx.ready(function () {
 		wx.onMenuShareTimeline({
 			title: shareTitle,
