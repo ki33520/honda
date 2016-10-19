@@ -283,7 +283,7 @@
 						<div class="works-node">
 							<div class="pd-img">
 								<div class="img-cover img2-cover"><img src="images/img2_cover.png" /></div>
-								<div class="img"><img class="node-img" src="images/works_1.jpg" /></div>
+								<div class="img node-img"></div>
 							</div>
 							<div class="dis"><span class="node-dis">群英聚会，比学赶帮，争创一流； 相互学习，加强交流，共同提高。</span></div>
 							<div class="number">编号: <span class="node-id"></span></div>
@@ -390,8 +390,6 @@
 
 	<script type="text/javascript">
 
-		console.log(window.orientation)
-
 		function orientationChange(){ 
 			switch(window.orientation) { 
 				case 0:
@@ -426,14 +424,22 @@
 			var s = document.getElementsByTagName("script")[0];
 			s.parentNode.insertBefore(hm, s);
 		})();
-		function trackEvent(a,b){
+		function trackEvent(a,b,c){
 			try{
-				ga('send','event',a,b);
+				if(c){
+					ga('send','event',a,b,c);
+				}else{
+					ga('send','event',a,b);
+				}
 			}catch(e){
 				console.log(e);
 			}
 			try{
-				_hmt.push(['_trackEvent',a,b]);
+				if(c){
+					_hmt.push(['_trackEvent',a,b,c]);
+				}else{
+					_hmt.push(['_trackEvent',a,b]);
+				}
 			}catch(e){
 				console.log(e);
 			}
@@ -450,6 +456,34 @@
 		$('.page2 .slide_btn').on('click',function(){
 			trackEvent('review','next2');
 		});
+		$('.btn-confirm').on('click',function(){
+			trackEvent('rule','agree');
+		});
+		$('.btn-back').on('click',function(){
+			trackEvent('rule','back2');
+		});
+		$('.type-btn-1').on('click',function(){
+			trackEvent('choose','student');
+		});
+		$('.type-btn-2').on('click',function(){
+			trackEvent('choose','enterprise');
+		});
+		$('.rank-btn').on('click',function(){
+			trackEvent('list','ranking');
+		});
+		$('.btn-back-choose').on('click',function(){
+			trackEvent('detail','reselect');
+		});
+		$('.btn-start-shake').on('click',function(){
+			trackEvent('detail','shake');
+		});
+		$('.btn-back-list').on('click',function(){
+			trackEvent('ranking','back3');
+		});
+		$('.share-btn').on('click',function(){
+			trackEvent('shake','share');
+		});
+		
 	</script>
 </body>
 </html>

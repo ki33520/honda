@@ -478,6 +478,9 @@ $(function(){
 	});
 
 	function countNumber(num){
+		if(num===10){
+			trackEvent('shake','start');
+		}
 		if(num%2 === 0){
 			playAudio('#shake');
 		};
@@ -575,12 +578,13 @@ $(function(){
 						var list_data = data[select_group.name];
 						self.boardWrap.empty();
 						$(list_data).each(function(index,item){
-							var list_node = _.find(self.list, function(node){ return node.id == Number(item.id); });
-							var li = $('<li class="cf"><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div class="img"><img src='+list_node.img+' /></div></div><div class="text"><div class="name">'+item.Name+'</div><div class="dis">得票数: '+item.vote+'ml</div></div></div></li>');
+							var li = $('<li class="cf"><div class="item rank">'+item.rowno+'</div><div class="item item-right"><div class="img-wrap"><div class="img-cover"></div><div class="img" style="background-image:url(images/'+item.id+'.jpg)"></div></div><div class="text"><div class="name">'+item.Name+'</div><div class="dis">得票数: '+item.vote+'ml</div></div></div></li>');
 							li.on('click',function(){
-								select_group.node = list_node;
+								select_group.node = item;
 								myPageSwiper.unlockSwipeToNext();
 								myPageSwiper.slideTo(5);
+								var trackType = item.type === '1' ? 's' : 'e';
+								trackEvent('list',trackType,item.id)
 							});
 							li.appendTo(self.boardWrap);
 						});
@@ -603,20 +607,19 @@ $(function(){
 				},
 				success: function(data){
 					if(data.status === 1){
-						var oilArr = _.union(data.company,data.personal);
+						var oilArr = data[select_group.name];
 						var ind = 0;
 						var wraps = [$('<div class="scroll-container scroll-container-1"><div class="swiper-wrapper"><div class="swiper-slide"><ul class="pd-list works-list pd-list-1"></ul></div></div><div class="swiper-scrollbar"></div></div>'),$('<div class="scroll-container scroll-container-2"><div class="swiper-wrapper"><div class="swiper-slide"><ul class="pd-list works-list pd-list-2"></ul></div></div><div class="swiper-scrollbar"></div></div>')];
-						$(self.list).each(function(index,item){
-							item.vote = _.find(oilArr, function(node){ return Number(node.id) == item.id; }).vote;
-							if(item.group === select_group.group){
-								var li = $('<li><div class="number">编号:'+(index+1)+'</div><div class="img-wrap"><div class="img-cover"></div><div class="img"><img src="'+item.img+'" /></div></div><div class="name">名称: '+item.name+'</div><div class="dis">加油量: '+item.vote+'ml</div></li>');
-								li.on('click',function(){
-									select_group.node = item;
-									myPageSwiper.unlockSwipeToNext();
-									myPageSwiper.slideTo(5);
-								});
-								wraps[ind++%2].find('.works-list').append(li);
-							}
+						$(oilArr).each(function(index,item){
+							var li = $('<li><div class="number">编号:'+item.id+'</div><div class="img-wrap"><div class="img-cover"></div><div class="img" style="background-image:url(images/'+item.id+'.jpg)"></div></div><div class="name">名称: '+item.name+'</div><div class="dis">加油量: '+item.vote+'ml</div></li>');
+							li.on('click',function(){
+								select_group.node = item;
+								myPageSwiper.unlockSwipeToNext();
+								myPageSwiper.slideTo(5);
+								var trackType = item.type === '1' ? 's' : 'e';
+								trackEvent('list',trackType,item.id)
+							});
+							wraps[ind++%2].find('.works-list').append(li);
 						});
 						self.workWrap.append(wraps[0]);
 						self.workWrap.append(wraps[1]);
@@ -627,7 +630,7 @@ $(function(){
 		},
 		setWorksNode: function(){
 			var node = select_group.node;
-			$('.works-node .node-img').attr('src',node.img);
+			$('.works-node .node-img').css('backgroundImage','url(images/'+node.id+'.jpg)');
 			$('.works-node .node-id').text(node.id);
 			$('.works-node .node-dis').text(node.des);
 			$('.works-node .node-vote').text(node.vote);

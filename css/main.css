@@ -148,14 +148,14 @@ transform: scaleX(1) skew(-15deg);}
 .page4 .row-level-7{ left: 1.234375rem; top: 1.421875rem; width: 7.5rem;}
 .pd-list{ float: right; width: 2.890625rem; padding-right: 0.0625rem; text-align: left;}
 .pd-list-2{ float: left; padding-left: 0.0625rem; padding-right: 0;}
-.pd-list li{ width: 2.890625rem; height: 2.859375rem; position: relative;}
+.pd-list li{ width: 2.890625rem; position: relative;}
 .pd-list .img-wrap{ position: relative; height: 1.96875rem; width: 100%;}
-.pd-list .img-wrap .img{ height: 100%; width: 100%; overflow: hidden;}
+.pd-list .img-wrap .img{ height: 100%; width: 100%; overflow: hidden; background-size: cover; background-position: center center; background-repeat: no-repeat;}
 .pd-list .img-wrap .img img{ height: 100%; width: auto; margin-left: -0.2109375rem;}
 .pd-list li .number{ background:rgba(240,11,11,0.6); width: 1.2rem; height: 0.484375rem; position: absolute; left: 0; top: 0; z-index: 9; color: #fff; font-size: 0.26rem; line-height: 0.484375rem; text-align: center;}
 .pd-list li .img-cover{ background-image: url(../images/img_cover.png); background-repeat: no-repeat; background-size: 100%; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background-position: left top;}
-.pd-list li .name{ color: #fff; font-size: 0.3rem; line-height: 120%; padding-top: 0.05rem;}
-.pd-list li .dis{ color: #fff; font-size: 0.3rem; line-height: 120%;}
+.pd-list li .name{ color: #fff; font-size: 0.3rem; line-height: 120%; padding-top: 0.08rem;}
+.pd-list li .dis{ color: #fff; font-size: 0.3rem; line-height: 120%; padding-bottom: 0.1rem;}
 .logo2{ position: absolute; top: 0.671875rem; left: 2.796875rem; width: 2.125rem; }
 .rank-btn{ position: absolute; left: 2.671875rem; top: 2.171875rem; width: 2.265625rem;}
 
@@ -190,7 +190,7 @@ transform: scaleX(1) skew(-15deg);}
 .btn-back-choose{ position: absolute; bottom: -0.8125rem; left: 1.78125rem; width: 2rem;}
 .btn-start-shake{ position: absolute; bottom: -0.8125rem; left: 4.078125rem; width: 2rem;}
 .img2-cover{ background: none; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background-position: left top;}
-.page6 .pd-img .img{ width: 6.8125rem; padding-top: 0.640625rem; padding-left: 0.546875rem;}
+.page6 .pd-img .img{ width: 6.8125rem; height: 4.046875rem; margin-top: 0.640625rem; margin-left: 0.546875rem; background-size: cover; background-position: center center; background-repeat: no-repeat;}
 
 /*page7*/
 .page7 .row-level-7{ left: 1.15625rem; top: 4.171875rem; width: 7.375rem; }
