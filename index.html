@@ -22,6 +22,9 @@
 	<title>Honda</title>
 </head>
 <body>
+
+	<div id="tips"><img src="images/tip.png"></div>
+
 	<div class="page-container">
 		<div class="masker stop-swiping"></div>
 		<div class="rules rule-wrap stop-swiping">
@@ -384,5 +387,69 @@
 	<script type="text/javascript" src="js/data.js"></script>
 	<script type="text/javascript" src="js/underscore.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+
+	<script type="text/javascript">
+
+		console.log(window.orientation)
+
+		function orientationChange(){ 
+			switch(window.orientation) { 
+				case 0:
+					$("#tips").hide();
+					break; 
+				case 180: // Upside-down Portrait 
+					$("#tips").hide();
+					break; 
+					
+				case -90: // Landscape: turned 90 degrees counter-clockwise 
+					$("#tips").show();
+					break; 
+				case 90: // Landscape: turned 90 degrees clockwise 
+					$("#tips").show();
+					break; 
+			} 
+		} 
+		window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", orientationChange, false);
+
+	</script>
+	<script type="text/javascript">
+		/*GA*/
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-84670612-1', 'auto');
+		ga('send', 'pageview');
+
+		/*baidu*/
+		var _hmt = _hmt || [];
+		(function(){
+			var hm = document.createElement("script");
+			hm.src = "//hm.baidu.com/hm.js?c041a9191352a4a72aac3f6fbce93d74";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+		function trackEvent(a,b){
+			try{
+				ga('send','event',a,b);
+			}catch(e){
+				console.log(e);
+			}
+			try{
+				_hmt.push(['_trackEvent',a,b]);
+			}catch(e){
+				console.log(e);
+			}
+		}
+		$('.page1 .slide_btn').on('click',function(){
+			trackEvent('home','next1');
+		});
+		$('.rule-btn').on('click',function(){
+			trackEvent('home','explain');
+		});
+		$('.btn-close').on('click',function(){
+			trackEvent('explain','back1');
+		});
+		$('.page2 .slide_btn').on('click',function(){
+			trackEvent('review','next2');
+		});
+	</script>
 </body>
 </html>

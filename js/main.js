@@ -34,6 +34,7 @@ var voiceStatus = true,
 	boardType = 'Leaderboard1',
 	voteType = "Vote",
 	oilType = "Oil",
+	isParticipate = "isParticipate1",
 	groupNames = ['personal','company'],
 //	pageHref = window.location.origin+window.location.pathname;
 	pageHref = document.URL.split("#")[0];
@@ -386,8 +387,23 @@ $(function(){
 		}
 	});
 	$('.btn-start-shake').on('click',function(){
-		myPageSwiper.unlockSwipeToNext();
-		myPageSwiper.slideTo(6);
+		$.ajax({
+			url: ajaxUrl,
+			type: "post",
+			data: {type: isParticipate,openid:$.QueryString('openid')},
+			dataType: "json",
+			error: function(request){
+				console.log(request);
+			},
+			success: function(data){
+				if(data.status === 1){
+					myPageSwiper.unlockSwipeToNext();
+					myPageSwiper.slideTo(6);
+				}else{
+					pop.alert('当天已经投过作品');
+				}
+			}
+		});
 	});
 	$('.share-btn').on('click',function(){
 		$('.share-cover').show();
@@ -507,7 +523,7 @@ $(function(){
 					$('.status-3 .number').text(vote_num);
 				}else if(data.status === 2){
 					$('.status-3 .number').text(0);
-					pop.alert('当天已对投过作品');
+					pop.alert('当天已经投过作品');
 				}else if(data.status === 3){
 					$('.status-3 .number').text(0);
 					pop.alert('所投作品id与作品所属类');
