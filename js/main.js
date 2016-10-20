@@ -399,6 +399,7 @@ $(function(){
 				if(data.status === 1){
 					myPageSwiper.unlockSwipeToNext();
 					myPageSwiper.slideTo(6);
+					trackEvent('shake','start');
 				}else{
 					pop.alert('当天已经投过作品');
 				}
@@ -434,7 +435,6 @@ $(function(){
 	var shake_bl = false;
 	var x = y = z = last_x = last_y = last_z = shake_num = 0;
 	function startShake(ind){
-		trackEvent('shake','start');
 		if (window.DeviceMotionEvent) {
 			if(ind===6){
 				window.addEventListener('devicemotion', deviceMotionHandler);
@@ -493,15 +493,21 @@ $(function(){
 		},1000)
 	}
 	var pop = {
-		wrap: $('<div class="pop-alert"><div class="text"></div></div>'),
-		show: function(text){
-			this.wrap.show().find('.text').text(text);
+		wrap: $('<div class="pop-alert"></div>'),
+		show: function(html){
+			var self = this;
+			this.wrap.show().html(html);
+			this.wrap.on('click',function(){
+				self.hide();
+			})
 		},
 		alert: function(text){
-			this.wrap.fadeIn(500).delay(1000).fadeOut(500).find('.text').text(text);
+			this.wrap.show().delay(1000).fadeOut(10,function(){
+				$(this).empty();
+			}).html('<div class="text">'+text+'</div>');
 		},
 		hide: function(){
-			this.wrap.hide().find('.text').text('');
+			this.wrap.hide().empty();
 		}
 	}
 	pop.wrap.appendTo('body');
@@ -543,7 +549,6 @@ $(function(){
 		var self = this;
 		this.group = 1;
 		this.name = groupNames[0];
-		this.node = window.worksList[0];
 		$('.type-btn').each(function(index,item){
 			$(item).on('click',function(){
 				self.group = index+1;
@@ -617,6 +622,9 @@ $(function(){
 								var trackType = item.type === '1' ? 's' : 'e';
 								trackEvent('list',trackType,item.id)
 							});
+							if(index===0){
+								select_group.node = item;
+							}
 							wraps[ind++%2].find('.works-list').append(li);
 						});
 						self.workWrap.append(wraps[0]);
