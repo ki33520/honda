@@ -461,6 +461,7 @@ $(function(){
 					shake_bl = true;
 					$('.status-1').hide();
 					$('.status-2').show();
+					myPageSwiper.lockSwipeToPrev();
 					countNumber(10);
 				}
 			}
@@ -474,6 +475,7 @@ $(function(){
 			shake_bl = true;
 			$('.status-1').hide();
 			$('.status-2').show();
+			myPageSwiper.lockSwipeToPrev();
 			countNumber(10);
 		}
 	});
@@ -517,6 +519,7 @@ $(function(){
 		var shake_num = shake_num ? shake_num : 1;
 		var vote_num = shake_num*6 >200 ? 200 : shake_num*6;
 		var node = select_group.node;
+		myPageSwiper.unlockSwipeToPrev();
 		$.ajax({
 			url: ajaxUrl,
 			type: "post",
