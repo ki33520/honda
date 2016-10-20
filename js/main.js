@@ -434,6 +434,7 @@ $(function(){
 	var shake_bl = false;
 	var x = y = z = last_x = last_y = last_z = shake_num = 0;
 	function startShake(ind){
+		trackEvent('shake','start');
 		if (window.DeviceMotionEvent) {
 			if(ind===6){
 				window.addEventListener('devicemotion', deviceMotionHandler);
@@ -478,9 +479,6 @@ $(function(){
 	});
 
 	function countNumber(num){
-		if(num===10){
-			trackEvent('shake','start');
-		}
 		if(num%2 === 0){
 			playAudio('#shake');
 		};
@@ -634,6 +632,10 @@ $(function(){
 			$('.works-node .node-id').text(node.id);
 			$('.works-node .node-dis').text(node.des);
 			$('.works-node .node-vote').text(node.vote);
+			$('.works-node .pd-img').off('click').on('click',function(event){
+				pop.show($('<div class="img-wrap"><img src="images/'+node.id+'.jpg" /></div>'));
+				event.stopPropagation();
+			})
 		},
 		setVote: function(){
 			shake_bl = false;
