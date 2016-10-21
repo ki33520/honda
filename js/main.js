@@ -294,15 +294,24 @@ $(function(){
 				if(e.activeIndex === 3){
 					works_vote.listAjax.complete(function(){
 						$('.works-wrap .scroll-container').each(function(index,item){
-							var self = this;
-							listSwipers[index] = new Swiper($(self),{
-								scrollbar: $(self).find('.swiper-scrollbar'),
-								scrollbarHide: false,
-								direction: 'vertical',
-								slidesPerView: 'auto',
-								mousewheelControl: true,
-								freeMode: true
-							});
+							$('body').append('<span style="position: absolute; top: 0; left: '+50*index+'px; color: #fff; z-index:999999;">'+$(this).find('li').length+'+'+$(this).find('ul').height()+'</span>')
+							
+						});
+						new Swiper($('.works-wrap .scroll-container')[0],{
+							scrollbar: $('.works-wrap .scroll-container').find('.swiper-scrollbar-1'),
+							scrollbarHide: false,
+							direction: 'vertical',
+							slidesPerView: 'auto',
+							mousewheelControl: true,
+							freeMode: true
+						});
+						new Swiper($('.works-wrap .scroll-container')[1],{
+							scrollbar: $('.works-wrap .scroll-container').find('.swiper-scrollbar-2'),
+							scrollbarHide: false,
+							direction: 'vertical',
+							slidesPerView: 'auto',
+							mousewheelControl: true,
+							freeMode: true
 						});
 					});
 				}
@@ -566,7 +575,7 @@ $(function(){
 		this.workWrap = $('.works-wrap');
 		this.listWraps = $('.works-wrap .works-list');
 		this.boardWrap = $('.leader-board');
-		this.setWorksList();
+		this.setWorksList(true);
 	};
 	worksVote.prototype = {
 		setLeaderBoard: function(){
@@ -600,9 +609,9 @@ $(function(){
 				}
 			});
 		},
-		setWorksList: function(){
+		setWorksList: function(bl){
 			var self = this;
-			self.workWrap.empty();
+			self.workWrap.find('.works-list').empty();
 			this.listAjax = $.ajax({
 				url: ajaxUrl,
 				type: "post",
@@ -615,7 +624,7 @@ $(function(){
 					if(data.status === 1){
 						var oilArr = data[select_group.name];
 						var ind = 0;
-						var wraps = [$('<div class="scroll-container scroll-container-1"><div class="swiper-wrapper"><div class="swiper-slide"><ul class="pd-list works-list pd-list-1"></ul></div></div><div class="swiper-scrollbar"></div></div>'),$('<div class="scroll-container scroll-container-2"><div class="swiper-wrapper"><div class="swiper-slide"><ul class="pd-list works-list pd-list-2"></ul></div></div><div class="swiper-scrollbar"></div></div>')];
+						var wraps = [$('.works-wrap .scroll-container-1'),$('.works-wrap .scroll-container-2')];
 						$(oilArr).each(function(index,item){
 							var li = $('<li><div class="number">编号:'+item.id+'</div><div class="img-wrap"><div class="img-cover"></div><div class="img" style="background-image:url(images/'+item.id+'.jpg)"></div></div><div class="name">名称: '+item.name+'</div><div class="dis">加油量: '+item.vote+'ml</div></li>');
 							li.on('click',function(){
@@ -630,8 +639,6 @@ $(function(){
 							}
 							wraps[ind++%2].find('.works-list').append(li);
 						});
-						self.workWrap.append(wraps[0]);
-						self.workWrap.append(wraps[1]);
 						self.setWorksNode();
 					}
 				}

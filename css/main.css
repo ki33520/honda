@@ -34,9 +34,10 @@ body{ position: relative; text-align: left; background-color: #780c17; font-fami
 .swiper-slide {}
 .scroll-container .swiper-slide { height: auto; -webkit-box-sizing: border-box; box-sizing: border-box;}
 .scroll-wrap{ height: 8.99rem; width: 6.53125rem; position: absolute; left: 0.546875rem; top: 2.890625rem; overflow: hidden;}
-.works-wrap .scroll-container{ width: 50%; float: left;}
+.works-wrap .scroll-container{ width: 50%; position: absolute; left: 0; top: 0;}
+.works-wrap .scroll-container-2{ left: auto; right: 0; }
 .scroll-wrap .scroll-container .swiper-slide{ background-color: transparent;}
-.scroll-container.swiper-container-vertical>.swiper-scrollbar{ width: 0.28125rem; right: 0; height: 100%; top: 0;}
+.scroll-container.swiper-container-vertical>.swiper-scrollbar{ width: 0.28125rem; right: 0;  height: 8.99rem; top: 0;}
 .scroll-container.swiper-container-vertical>.swiper-scrollbar .swiper-scrollbar-drag{ background: #88252a; border-radius: 0; box-shadow: 0 0.2rem 0.1rem #000;}
 .scroll-container-1.swiper-container-vertical>.swiper-scrollbar{ right: auto; left: 0; background: #4b0914; border-radius: 0;}
 
@@ -147,9 +148,9 @@ transform: scaleX(1) skew(-15deg);}
 
 /*page4*/
 .page4 .row-level-7{ left: 1.234375rem; top: 1.421875rem; width: 7.5rem;}
-.pd-list{ float: right; width: 2.890625rem; padding-right: 0.0625rem; text-align: left;}
-.pd-list-2{ float: left; padding-left: 0.0625rem; padding-right: 0;}
-.pd-list li{ width: 2.890625rem; position: relative;}
+.pd-list{ margin-left: 0.3125rem; width: 2.890625rem; padding-right: 0.0625rem; text-align: left;}
+.pd-list-2{ margin-left: 0; padding-left: 0.0625rem; padding-right: 0;}
+.pd-list li{ width: 2.890625rem; height: 2.859375rem; position: relative;}
 .pd-list .img-wrap{ position: relative; height: 1.96875rem; width: 100%;}
 .pd-list .img-wrap .img{ height: 100%; width: 100%; overflow: hidden; background-size: cover; background-position: center center; background-repeat: no-repeat;}
 .pd-list .img-wrap .img img{ height: 100%; width: auto; margin-left: -0.2109375rem;}

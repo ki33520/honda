@@ -9,30 +9,87 @@
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<link rel="stylesheet" type="text/css" href="css/animate.css">
 	<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css?t=1">
 	<title>Honda</title>
 </head>
 <body>
-	<div class="timer"></div>
+
+	<div id="tips"><img src="images/tip.png"></div>
+
+	<div class="page-container">
+		<div class="swiper-container swiper-main">
+			<div class="swiper-wrapper view-list">
+				<div class="swiper-slide page page-list page4 stop-swiping">
+					<div class="row row-level-1"><img src="images/view_item2_1.jpg" /></div>
+					<div class="row row-level-2 animate fast" data-animate="fadeIn"></div>
+					<div class="row row-level-3 animate fast delay0_25" data-animate="bounceInLeft"><img src="images/view_item4_2.png" /></div>
+					<div class="row row-level-7 animate fast delay0_5" data-animate="bounceIn">
+						<div class="logo2"><img src="images/logo2.png" /></div>
+						<div class="rank-btn sound-btn"><img src="images/icon_btn_3.png" /></div>
+						<div class="scroll-wrap works-wrap">
+							<div style="position: absolute; left:0; top: 0; width: 50%; height: 100%;">
+							<div style="width: 100%;" class="scroll-container scroll-container-1"><div class="swiper-wrapper"><div class="swiper-slide"><ul class="pd-list works-list pd-list-1"><li>1</li><li>2</li><li>3</li><li>1</li><li>2</li><li>3</li></ul></div></div><div class="swiper-scrollbar"></div></div>
+							</div>
+							<div style="position: absolute; right:0; top: 0; width: 50%; height: 100%;">
+							<div style="width: 100%;" class="scroll-container scroll-container-2"><div class="swiper-wrapper"><div class="swiper-slide"><ul class="pd-list works-list pd-list-2"><li>1</li><li>2</li><li>3</li><li>1</li><li>2</li><li>3</li></ul></div></div><div class="swiper-scrollbar"></div></div>
+							</div>
+						</div>
+						<div><img src="images/view_item5_6.png" /></div>
+					</div>
+					<div class="row row-level-4 animate fast" data-animate="bounceInLeft">
+						<div class="tl-light">
+							<div class="lights cf">
+								<div class="light light1"><img src="images/icon_light1_1.png" /></div>
+								<div class="light light2"><img src="images/icon_light1_2.png" /></div>
+								<div class="light light3"><img src="images/icon_light1_3.png" /></div>
+							</div>
+						</div>
+						<div><img src="images/view_item4_3.png" /></div>
+					</div>
+					<div class="row row-level-5 animate fast" data-animate="bounceInRight">
+						<div class="tr-light">
+							<div class="lights cf">
+								<div class="light light4"><img src="images/icon_light2_1.png" /></div>
+								<div class="light light5"><img src="images/icon_light2_2.png" /></div>
+								<div class="light light6"><img src="images/icon_light2_3.png" /></div>
+							</div>
+						</div>
+						<div><img src="images/view_item4_4.png" /></div>
+					</div>
+					<div class="row row-level-6 animate fast" data-animate="bounceInUp"><img src="images/view_item4_5.png" /></div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<audio style="display:none;" class="audio" loop="loop" id="bgm" controls="controls" src="media/bgm.mp3" ></audio>
+	<audio style="display:none;" class="audio" id="button" controls="controls" src="media/button.mp3" ></audio>
+	<audio style="display:none;" class="audio" id="armor" controls="controls" src="media/armor.mp3" ></audio>
+	<audio style="display:none;" class="audio" id="shake" controls="controls" src="media/shake.mp3" ></audio>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="js/preloadjs.min.js"></script>
+	<script type="text/javascript" src="js/swiper.min.js"></script>
+	<script type="text/javascript" src="js/data.js"></script>
+	<script type="text/javascript" src="js/underscore.js"></script>
 	<script type="text/javascript">
-		var startTime = new Date().getTime();
-		function getTen(start){
-			var activeTime = new Date().getTime();
-			var times = activeTime - startTime;
-			if(!start){
-				if(times>=6000){
-					startTime = startTime+6000;
-					console.log('got it2+'+activeTime);
-				}
-			}else{
-				console.log('got it1+'+activeTime);
-			}
-			setTimeout(function(){
-				getTen()
-			},1000)
-		}
-		getTen(true);
+		$('.page-container').show();
+		new Swiper('.works-wrap .scroll-container-1',{
+			scrollbar: '.works-wrap .scroll-container-1 .swiper-scrollbar',
+			scrollbarHide: false,
+			direction: 'vertical',
+			slidesPerView: 'auto',
+			mousewheelControl: true,
+			freeMode: true
+		});
+		new Swiper('.works-wrap .scroll-container-2',{
+			scrollbar: '.works-wrap .scroll-container-2 .swiper-scrollbar',
+			scrollbarHide: false,
+			direction: 'vertical',
+			slidesPerView: 'auto',
+			mousewheelControl: true,
+			freeMode: true
+		});
 	</script>
 </body>
 </html>
