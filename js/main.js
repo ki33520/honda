@@ -292,28 +292,42 @@ $(function(){
 				startShake(e.activeIndex);
 				
 				if(e.activeIndex === 3){
-					works_vote.listAjax.complete(function(){
-						$('.works-wrap .scroll-container').each(function(index,item){
-							$('body').append('<span style="position: absolute; top: 0; left: '+50*index+'px; color: #fff; z-index:999999;">'+$(this).find('li').length+'+'+$(this).find('ul').height()+'</span>')
+
+					// alert("444")
+
+					// 
+					// 	setTimeout(function(){
 							
-						});
-						new Swiper($('.works-wrap .scroll-container')[0],{
-							scrollbar: $('.works-wrap .scroll-container').find('.swiper-scrollbar-1'),
-							scrollbarHide: false,
-							direction: 'vertical',
-							slidesPerView: 'auto',
-							mousewheelControl: true,
-							freeMode: true
-						});
-						new Swiper($('.works-wrap .scroll-container')[1],{
-							scrollbar: $('.works-wrap .scroll-container').find('.swiper-scrollbar-2'),
-							scrollbarHide: false,
-							direction: 'vertical',
-							slidesPerView: 'auto',
-							mousewheelControl: true,
-							freeMode: true
-						});
-					});
+					// 	}, 500)
+						
+
+					// 	// $('.works-wrap .scroll-container-1').each(function(index,item){
+					// 	// 	var self = this;
+					// 	// 	var scrollContainer01 = new Swiper($(self),{
+					// 	// 		scrollbar: $(self).find('.swiper-scrollbar'),
+					// 	// 		scrollbarHide: false,
+					// 	// 		direction: 'vertical',
+					// 	// 		slidesPerView: 'auto',
+					// 	// 		mousewheelControl: true,
+					// 	// 		freeMode: true
+					// 	// 	});
+					// 	// });
+
+					// works_vote.listAjax.complete(function(){
+
+					// 	$('.works-wrap .scroll-container').each(function(index,item){
+					// 		var self = this;
+					// 		new Swiper($(self),{
+					// 			scrollbar: $(self).find('.swiper-scrollbar'),
+					// 			scrollbarHide: false,
+					// 			direction: 'vertical',
+					// 			slidesPerView: 'auto',
+					// 			mousewheelControl: true,
+					// 			freeMode: true
+					// 		});
+					// 	});
+						
+					// });
 				}
 				if(e.activeIndex === 4){
 					works_vote.boardAjax.complete(function(){
@@ -575,7 +589,7 @@ $(function(){
 		this.workWrap = $('.works-wrap');
 		this.listWraps = $('.works-wrap .works-list');
 		this.boardWrap = $('.leader-board');
-		this.setWorksList(true);
+		this.setWorksList();
 	};
 	worksVote.prototype = {
 		setLeaderBoard: function(){
@@ -609,9 +623,10 @@ $(function(){
 				}
 			});
 		},
-		setWorksList: function(bl){
+		setWorksList: function(){
 			var self = this;
-			self.workWrap.find('.works-list').empty();
+			$("#leftSlideBlock").empty();
+			$("#rightSlideBlock").empty();
 			this.listAjax = $.ajax({
 				url: ajaxUrl,
 				type: "post",
@@ -624,9 +639,9 @@ $(function(){
 					if(data.status === 1){
 						var oilArr = data[select_group.name];
 						var ind = 0;
-						var wraps = [$('.works-wrap .scroll-container-1'),$('.works-wrap .scroll-container-2')];
+						// var wraps = [$('<div class="scroll-container scroll-container-1"><div class="swiper-wrapper"><div class="swiper-slide"><ul class="pd-list works-list pd-list-1"></ul></div></div><div class="swiper-scrollbar"></div></div>'),$('<div class="scroll-container scroll-container-2"><div class="swiper-wrapper"><div class="swiper-slide"><ul class="pd-list works-list pd-list-2"></ul></div></div><div class="swiper-scrollbar"></div></div>')];
 						$(oilArr).each(function(index,item){
-							var li = $('<li><div class="number">编号:'+item.id+'</div><div class="img-wrap"><div class="img-cover"></div><div class="img" style="background-image:url(images/'+item.id+'.jpg)"></div></div><div class="name">名称: '+item.name+'</div><div class="dis">加油量: '+item.vote+'ml</div></li>');
+							var li = $('<li class="swiper-slide"><div class="number">编号:'+item.id+'</div><div class="img-wrap"><div class="img-cover"></div><div class="img" style="background-image:url(images/'+item.id+'.jpg)"></div></div><div class="name">名称: '+item.name+'</div><div class="dis">加油量: '+item.vote+'ml</div></li>');
 							li.on('click',function(){
 								select_group.node = item;
 								myPageSwiper.unlockSwipeToNext();
@@ -637,9 +652,74 @@ $(function(){
 							if(index===0){
 								select_group.node = item;
 							}
-							wraps[ind++%2].find('.works-list').append(li);
+							if(index%2 == 0){
+								$("#leftSlideBlock").append(li);
+							}else{
+								$("#rightSlideBlock").append(li);
+							}
+							// wraps[ind++%2].find('.works-list').append(li);
 						});
+						// self.workWrap.append(wraps[0]);
+						// self.workWrap.append(wraps[1]);
+
+						// scrollContainer01 = null;
+						// scrollContainer02 = null;
+
+						// setTimeout(function(){
+						// 	var scrollContainer01 = new Swiper('.scroll-container-1', {
+						// 		scrollbar: '.swiper-scrollbar-01',
+						// 		scrollbarHide: false,
+						// 		direction: 'vertical',
+						// 		slidesPerView: 3,
+						// 		mousewheelControl: true,
+								
+						// 	});
+
+						// 	var scrollContainer02 = new Swiper('.scroll-container-3', {
+						// 		scrollbar: '.swiper-scrollbar-02',
+						// 		scrollbarHide: false,
+						// 		direction: 'vertical',
+						// 		slidesPerView: 3,
+						// 		mousewheelControl: true,
+						// 	});
+						// }, 500)
+
+						// alert("feeefefef")
+
+						var h = $(".works-wrap").eq(0).height();
+
+						$(".scroll-container-1, .scroll-container-3").height(h)
+						$("#leftSlideBlock, #rightSlideBlock").height(h)
+
+						var ua = navigator.userAgent.toLowerCase();	
+
+						setTimeout(function(){
+							if (/iphone|ipad|ipod/.test(ua)) {
+								$('.works-wrap .scroll-container').each(function(index,item){
+									var self = this;
+									new Swiper($(self),{
+										scrollbar: $(self).find('.swiper-scrollbar'),
+										scrollbarHide: false,
+										direction: 'vertical',
+										slidesPerView: 'auto',
+										freeMode: true
+									});
+								});
+							}else{
+								$('.works-wrap .scroll-container').each(function(index,item){
+									var self = this;
+									new Swiper($(self),{
+										direction: 'vertical',
+										slidesPerView:3
+									});
+								});
+							}
+
+						}, 3000)
+						
+						
 						self.setWorksNode();
+
 					}
 				}
 			});
@@ -651,7 +731,7 @@ $(function(){
 			$('.works-node .node-dis').text(node.des);
 			$('.works-node .node-vote').text(node.vote);
 			$('.works-node .pd-img').off('click').on('click',function(event){
-				pop.show($('<div class="img-wrap"><img src="images/'+node.id+'.jpg" /></div>'));
+				pop.show($('<div class="img-wrap"><div style="background-image:url(images/'+node.id+'.jpg)"></div></div>'));
 				event.stopPropagation();
 			})
 		},
